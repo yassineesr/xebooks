@@ -1,0 +1,8 @@
+---
+- hosts: container_registry
+  gather_facts: yes
+  become: yes
+  roles:
+    - ssl
+# TODO: add more files to the roles directory for installation of docker and container registry stuff
+# TODO: copy the CA certificate to all the hosts
