@@ -1,0 +1,47 @@
+---
+- name: "Create tmp directory"
+  file:
+    path: "{{ tmp_dir }}/packages/"
+    state: directory
+    mode: 0755
+
+- name: Copy rpm packages to temp directory
+  copy:
+    src: "{{ item }}"
+    dest: "{{ tmp_dir }}/packages/"
+  with_fileglob:
+    - "*.rpm"
+
+- name: Find all rpm files in the directory
+  find:
+    paths: "{{ tmp_dir }}/packages/"
+    patterns: "*.rpm"
+  register: rpm_files
+
+- name: Setting rpm_list
+  set_fact:
+    rpm_list: "{{ rpm_files.files | map(attribute='path') | list}}"
+
+- name: installing the rpm files
+  yum:
+    name: "{{rpm_list}}"
+    state: present
+    disable_gpg_check: true
+
+- name: Copy haproxy.cfg to /etc/haproxy/haproxy.cfg
+  template:
+    src: "haproxy.cfg.j2"
+    dest: "/etc/haproxy/haproxy.cfg"
+    mode: 0644
+
+- name: Make SELinux permissive persistently for haproxy
+  seboolean:
+    name: haproxy_connect_any
+    state: on
+    persistent: yes
+
+- name: Enable and start haproxy service
+  service:
+    name: haproxy
+    enabled: yes
+    state: started
