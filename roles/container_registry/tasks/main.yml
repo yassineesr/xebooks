@@ -1,0 +1,25 @@
+---
+- name: Copy registry tar for offline installation
+  ansible.builtin.copy:
+    src: "registry.tar.gz"
+    dest: "{{ tmp_dir }}/registry.tar.gz"
+
+- name: Load image into Docker
+  community.docker.docker_image_load:
+    path: "{{ tmp_dir }}/registry.tar.gz"
+
+- name: Start registry container
+  community.docker.docker_container:
+    name: registry
+    image: registry:2.8.3
+    state: started
+    ports:
+      - "443:5000"
+    volumes:
+      - "{{ registry_data_dir }}:/data"
+      - "{{ certs_dir }}:/certs"
+    restart_policy: always
+    env:
+      REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY: /data
+      REGISTRY_HTTP_TLS_CERTIFICATE: /certs/certificate.crt
+      REGISTRY_HTTP_TLS_KEY: /certs/certificate.key

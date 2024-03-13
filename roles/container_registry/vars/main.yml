@@ -1,0 +1,3 @@
+certs_dir: /certs
+registry_data_dir: /registry-data
+tmp_dir: /tmp

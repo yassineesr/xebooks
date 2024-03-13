@@ -1,0 +1,59 @@
+---
+# This playbook is not idempotent, it will always create a new certificate
+- name: Remove old certificates
+  file:
+    path: "{{certs_dir}}"
+    state: absent
+
+- name: Create Certs directory
+  file:
+    path: "{{certs_dir}}"
+    state: directory
+    mode: 0755
+
+- name: Copy CA certificate to the target
+  copy:
+    src: "ca-certificate.crt"
+    dest: "{{certs_dir}}/ca-certificate.crt"
+
+- name: Copy CA private key to the target
+  copy:
+    src: "ca-certificate.key"
+    dest: "{{certs_dir}}/ca-certificate.key"
+
+- name: Create private key for new certificate on ssl_server
+  community.crypto.openssl_privatekey:
+    path: "{{certs_dir}}/certificate.key"
+
+- name: Create certificate signing request (CSR) for new certificate
+  community.crypto.openssl_csr_pipe:
+    privatekey_path: "{{certs_dir}}/certificate.key"
+    subject_alt_name:
+      - "DNS:{{inventory_hostname}}"
+      - "IP:{{ansible_default_ipv4.address}}"
+  register: csr
+
+- name: Sign certificate with our CA
+  community.crypto.x509_certificate_pipe:
+    csr_content: "{{ csr.csr }}"
+    provider: ownca
+    ownca_path: "{{certs_dir}}/ca-certificate.crt"
+    ownca_privatekey_path: "{{certs_dir}}/ca-certificate.key"
+    ownca_privatekey_passphrase: "{{ secret_ca_passphrase }}"
+    ownca_not_after: +365d # valid for one year
+    ownca_not_before: "-1d" # valid since yesterday
+  register: certificate
+
+- name: Write certificate file
+  copy:
+    dest: "{{certs_dir}}/certificate.crt"
+    content: "{{ certificate.certificate }}"
+
+- name: Add certificate to trust store
+  ansible.builtin.copy:
+    remote_src: yes
+    src: "{{certs_dir}}/ca-certificate.crt"
+    dest: /etc/pki/ca-trust/source/anchors/
+
+- name: Update trust store
+  ansible.builtin.command: update-ca-trust
