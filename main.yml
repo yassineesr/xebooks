@@ -35,3 +35,9 @@
   become: yes
   roles:
     - kubernetes/install_deps
+
+- hosts: control_planes
+  gather_facts: yes
+  become: yes
+  roles:
+    - kubernetes/pull_images
