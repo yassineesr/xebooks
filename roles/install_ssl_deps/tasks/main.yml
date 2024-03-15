@@ -25,4 +25,5 @@
   yum:
     name: "{{rpm_list}}"
     state: present
+    disablerepo: "*"
     disable_gpg_check: true
