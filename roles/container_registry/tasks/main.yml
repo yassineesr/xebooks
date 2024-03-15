@@ -1,12 +1,14 @@
 ---
-- name: Copy registry tar for offline installation
+- name: Copy all .tar.gz files to the target
   ansible.builtin.copy:
-    src: "registry.tar.gz"
-    dest: "{{ tmp_dir }}/registry.tar.gz"
+    src: "{{ item }}"
+    dest: "{{ tmp_dir }}"
+  with_fileglob:
+    - "*.tar.gz"
 
-- name: Load image into Docker
+- name: Load registry image into Docker
   community.docker.docker_image_load:
-    path: "{{ tmp_dir }}/registry.tar.gz"
+    path: "{{ tmp_dir }}/registry-2.8.3.tar.gz"
 
 - name: Start registry container
   community.docker.docker_container:
@@ -23,3 +25,41 @@
       REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY: /data
       REGISTRY_HTTP_TLS_CERTIFICATE: /certs/certificate.crt
       REGISTRY_HTTP_TLS_KEY: /certs/certificate.key
+
+- name: Find all the .tar.gz in the tmp directory
+  find:
+    paths: "{{ tmp_dir }}"
+    patterns: "*.tar.gz"
+  register: tgz_files
+
+- name: Setting tgz_list
+  set_fact:
+    tgz_list: "{{ tgz_files.files | map(attribute='path') | list}}"
+
+- name: Load images into Docker
+  community.docker.docker_image_load:
+    path: "{{ item }}"
+  with_items: "{{ tgz_list }}"
+
+- name: Tag the images
+  ansible.builtin.shell: docker image tag {{ item.src }} {{ item.dest }}
+  with_items:
+    - { src: "a0eed15eed44", dest: "127.0.0.1/etcd:3.5.10-0" }
+    - { src: "8a9000f98a52", dest: "127.0.0.1/kube-apiserver:v1.29.2" }
+    - { src: "e6f181688397", dest: "127.0.0.1/pause:3.9" }
+    - { src: "cbb01a7bd410", dest: "127.0.0.1/coredns:v1.11.1" }
+    - { src: "9344fce2372f", dest: "127.0.0.1/kube-proxy:v1.29.2" }
+    - { src: "6fc5e6b7218c", dest: "127.0.0.1/kube-scheduler:v1.29.2" }
+    - { src: "138fb5a3a2e3", dest: "127.0.0.1/kube-controller-manager:v1.29.2" }
+
+- name: Push the images
+  community.docker.docker_image_push:
+    name: "{{ item.dest }}"
+  with_items:
+    - { src: "a0eed15eed44", dest: "127.0.0.1/etcd:3.5.10-0" }
+    - { src: "8a9000f98a52", dest: "127.0.0.1/kube-apiserver:v1.29.2" }
+    - { src: "e6f181688397", dest: "127.0.0.1/pause:3.9" }
+    - { src: "cbb01a7bd410", dest: "127.0.0.1/coredns:v1.11.1" }
+    - { src: "9344fce2372f", dest: "127.0.0.1/kube-proxy:v1.29.2" }
+    - { src: "6fc5e6b7218c", dest: "127.0.0.1/kube-scheduler:v1.29.2" }
+    - { src: "138fb5a3a2e3", dest: "127.0.0.1/kube-controller-manager:v1.29.2" }
