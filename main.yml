@@ -29,3 +29,9 @@
   become: yes
   roles:
     - haproxy
+
+- hosts: control_planes,nodes
+  gather_facts: yes
+  become: yes
+  roles:
+    - kubernetes/install_deps

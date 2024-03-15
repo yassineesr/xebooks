@@ -1,6 +1,12 @@
 ---
-- hosts: load_balancer
+- hosts: container_registry
   gather_facts: yes
   become: yes
   roles:
-    - haproxy
+    - container_registry
+
+- hosts: control_planes,nodes
+  gather_facts: yes
+  become: yes
+  roles:
+    - kubernetes/install_deps
