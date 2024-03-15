@@ -31,6 +31,8 @@
     subject_alt_name:
       - "DNS:{{inventory_hostname}}"
       - "IP:{{ansible_default_ipv4.address}}"
+      - "DNS:localhost"
+      - "IP:127.0.0.1"
   register: csr
 
 - name: Sign certificate with our CA
