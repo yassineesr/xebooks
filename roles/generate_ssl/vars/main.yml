@@ -1,3 +1,2 @@
-secret_ca_passphrase: test
 tmp_dir: /tmp
 certs_dir: /certs

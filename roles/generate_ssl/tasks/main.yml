@@ -21,7 +21,7 @@
     src: "ca-certificate.key"
     dest: "{{certs_dir}}/ca.key"
 
-- name: Create private key for new certificate on ssl_server
+- name: Create private key for new certificate
   community.crypto.openssl_privatekey:
     path: "{{certs_dir}}/certificate.key"
 
@@ -41,7 +41,6 @@
     provider: ownca
     ownca_path: "{{certs_dir}}/ca.crt"
     ownca_privatekey_path: "{{certs_dir}}/ca.key"
-    ownca_privatekey_passphrase: "{{ secret_ca_passphrase }}"
     ownca_not_after: +365d # valid for one year
     ownca_not_before: "-1d" # valid since yesterday
   register: certificate
