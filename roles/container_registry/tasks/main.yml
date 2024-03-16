@@ -10,14 +10,6 @@
   community.docker.docker_image_load:
     path: "{{ tmp_dir }}/registry-2.8.3.tar.gz"
 
-- name: Load flannel image into Docker
-  community.docker.docker_image_load:
-    path: "{{ tmp_dir }}/flannel-v0.24.3.tar.gz"
-
-- name: Load flannel CNI image into Docker
-  community.docker.docker_image_load:
-    path: "{{ tmp_dir }}/flannel-cni-plugin-v1.4.0-flannel1.tar.gz"
-
 - name: Start registry container
   community.docker.docker_container:
     name: registry
