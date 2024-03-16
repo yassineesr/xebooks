@@ -1,0 +1,2 @@
+- name: Join the control plane nodes to the cluster
+  ansible.builtin.shell: "{{ hostvars[groups['control_planes'][0]]['control_plane_join_command'] }} --cri-socket unix:///var/run/crio/crio.sock"

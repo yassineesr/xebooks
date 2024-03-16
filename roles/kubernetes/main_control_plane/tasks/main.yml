@@ -1,0 +1,86 @@
+- name: Ensure /etc/kubernetes/pki directory exists
+  file:
+    path: /etc/kubernetes/pki
+    state: directory
+    mode: 0755
+
+- name: Copy the CA key from cert directory to /etc/kubernetes/pki
+  copy:
+    src: "{{ certs_dir }}/ca.key"
+    dest: "/etc/kubernetes/pki/ca.key"
+    remote_src: true
+
+- name: Copy the CA certificate from cert directory to /etc/kubernetes/pki
+  copy:
+    src: "{{ certs_dir }}/ca.crt"
+    dest: "/etc/kubernetes/pki/ca.crt"
+    remote_src: true
+
+- name: Copy the CA certificate from cert directory to /etc/kubernetes/pki/ for front-proxy-ca
+  copy:
+    src: "{{ certs_dir }}/ca.crt"
+    dest: "/etc/kubernetes/pki/front-proxy-ca.crt"
+    remote_src: true
+
+- name: Copy the CA key from cert directory to /etc/kubernetes/pki/ for front-proxy-ca
+  copy:
+    src: "{{ certs_dir }}/ca.key"
+    dest: "/etc/kubernetes/pki/front-proxy-ca.key"
+    remote_src: true
+
+- name: Ensure /etc/kubernetes/pki/etcd directory exists
+  file:
+    path: /etc/kubernetes/pki/etcd
+    state: directory
+    mode: 0755
+
+- name: Copy the CA key from cert directory to /etc/kubernetes/pki/etcd
+  copy:
+    src: "{{ certs_dir }}/ca.key"
+    dest: "/etc/kubernetes/pki/etcd/ca.key"
+    remote_src: true
+
+- name: Copy the CA certificate from cert directory to /etc/kubernetes/pki/etcd
+  copy:
+    src: "{{ certs_dir }}/ca.crt"
+    dest: "/etc/kubernetes/pki/etcd/ca.crt"
+    remote_src: true
+
+- name: Generate a random certificate-key for joining other control planes
+  ansible.builtin.shell: kubeadm certs certificate-key
+  register: kube_certificate_key
+
+- name: Start kubeadm init on first control plane
+  ansible.builtin.shell: |
+    kubeadm init \
+    --pod-network-cidr=10.244.0.0/16 \
+    --image-repository {{hostvars[groups['container_registry'][0]]['ansible_host']}} \
+    --control-plane-endpoint {{hostvars[groups['load_balancer'][0]]['ansible_host']}} \
+    --cri-socket unix:///var/run/crio/crio.sock \
+    --upload-certs \
+    --kubernetes-version v1.29.2 \
+    --certificate-key {{ kube_certificate_key.stdout }}
+
+- name: Get the kubeadm control plane join command
+  ansible.builtin.shell: kubeadm token create --print-join-command --certificate-key {{ kube_certificate_key.stdout }}
+  register: control_plane_join_command
+
+- name: Get the kubeadm node join command
+  ansible.builtin.shell: kubeadm token create --print-join-command
+  register: node_join_command
+
+- name: Set the kubeadm control plane join command
+  ansible.builtin.set_fact:
+    control_plane_join_command: "{{ control_plane_join_command.stdout_lines[0] }}"
+
+- name: Set the kubeadm node join command
+  ansible.builtin.set_fact:
+    node_join_command: "{{ node_join_command.stdout_lines[0] }}"
+
+- name: Copy flannel manifest template to host (With private registry)
+  ansible.builtin.template:
+    src: "kube-flannel.yml"
+    dest: "kube-flannel.yml"
+
+- name: Apply cni network plugin (Flannel)
+  ansible.builtin.shell: kubectl --kubeconfig /etc/kubernetes/admin.conf apply -f kube-flannel.yml
