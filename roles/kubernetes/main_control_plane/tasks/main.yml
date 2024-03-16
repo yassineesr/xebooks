@@ -79,7 +79,7 @@
 
 - name: Copy flannel manifest template to host (With private registry)
   ansible.builtin.template:
-    src: "kube-flannel.yml"
+    src: "kube-flannel.yml.j2"
     dest: "kube-flannel.yml"
 
 - name: Apply cni network plugin (Flannel)
