@@ -1,6 +1,6 @@
 ---
-- hosts: control_planes
+- hosts: control_planes[0]
   gather_facts: yes
   become: yes
   roles:
-    - kubernetes/pull_images
+    - kubernetes/add_external_ca
