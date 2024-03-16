@@ -1,6 +1,8 @@
 ---
-- hosts: control_planes[0]
+- hosts: all
   gather_facts: yes
   become: yes
-  roles:
-    - kubernetes/add_external_ca
+  tasks:
+    - name: Removing default route
+      ansible.builtin.shell: ip route del default
+      ignore_errors: yes
