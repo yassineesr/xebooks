@@ -1,0 +1,41 @@
+- name: Ensure /etc/kubernetes/pki directory exists
+  file:
+    path: /etc/kubernetes/pki
+    state: directory
+    mode: 0755
+
+- name: Copy the CA key from cert directory to /etc/kubernetes/pki
+  copy:
+    src: "{{ certs_dir }}/ca.key"
+    dest: "/etc/kubernetes/pki/ca.key"
+
+- name: Copy the CA certificate from cert directory to /etc/kubernetes/pki
+  copy:
+    src: "{{ certs_dir }}/ca.crt"
+    dest: "/etc/kubernetes/pki/ca.crt"
+
+- name: Copy the CA certificate from cert directory to /etc/kubernetes/pki/ for front-proxy-ca
+  copy:
+    src: "{{ certs_dir }}/ca.crt"
+    dest: "/etc/kubernetes/pki/front-proxy-ca.crt"
+
+- name: Copy the CA key from cert directory to /etc/kubernetes/pki/ for front-proxy-ca
+  copy:
+    src: "{{ certs_dir }}/ca.key"
+    dest: "/etc/kubernetes/pki/front-proxy-ca.key"
+
+- name: Ensure /etc/kubernetes/pki/etcd directory exists
+  file:
+    path: /etc/kubernetes/pki/etcd
+    state: directory
+    mode: 0755
+
+- name: Copy the CA key from cert directory to /etc/kubernetes/pki/etcd
+  copy:
+    src: "{{ certs_dir }}/ca.key"
+    dest: "/etc/kubernetes/pki/etcd/ca.key"
+
+- name: Copy the CA certificate from cert directory to /etc/kubernetes/pki/etcd
+  copy:
+    src: "{{ certs_dir }}/ca.crt"
+    dest: "/etc/kubernetes/pki/etcd/ca.crt"

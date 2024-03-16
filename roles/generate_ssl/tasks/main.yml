@@ -14,12 +14,12 @@
 - name: Copy CA certificate to the target
   copy:
     src: "ca-certificate.crt"
-    dest: "{{certs_dir}}/ca-certificate.crt"
+    dest: "{{certs_dir}}/ca.crt"
 
 - name: Copy CA private key to the target
   copy:
     src: "ca-certificate.key"
-    dest: "{{certs_dir}}/ca-certificate.key"
+    dest: "{{certs_dir}}/ca.key"
 
 - name: Create private key for new certificate on ssl_server
   community.crypto.openssl_privatekey:
@@ -39,8 +39,8 @@
   community.crypto.x509_certificate_pipe:
     csr_content: "{{ csr.csr }}"
     provider: ownca
-    ownca_path: "{{certs_dir}}/ca-certificate.crt"
-    ownca_privatekey_path: "{{certs_dir}}/ca-certificate.key"
+    ownca_path: "{{certs_dir}}/ca.crt"
+    ownca_privatekey_path: "{{certs_dir}}/ca.key"
     ownca_privatekey_passphrase: "{{ secret_ca_passphrase }}"
     ownca_not_after: +365d # valid for one year
     ownca_not_before: "-1d" # valid since yesterday
