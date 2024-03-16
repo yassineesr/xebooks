@@ -53,7 +53,7 @@
 - name: Add certificate to trust store
   ansible.builtin.copy:
     remote_src: yes
-    src: "{{certs_dir}}/ca-certificate.crt"
+    src: "{{certs_dir}}/ca.crt"
     dest: /etc/pki/ca-trust/source/anchors/
 
 - name: Update trust store
