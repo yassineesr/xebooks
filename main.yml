@@ -54,3 +54,10 @@
   become: yes
   roles:
     - kubernetes/join_control_plane
+
+- hosts: nodes
+  gather_facts: yes
+  become: yes
+  roles:
+    - kubernetes/join_workers
+
