@@ -1,8 +1,13 @@
 ---
 - name: Make SELinux permissive
-  selinux:
-    state: permissive
-    policy: targeted
+  ansible.builtin.shell: setenforce 0
+
+- name: Make SELinux permissive on reboot
+  ansible.builtin.replace:
+    path: /etc/selinux/config
+    regexp: "SELINUX=enforcing"
+    replace: "SELINUX=permissive"
+    backup: yes
 
 - name: "Create tmp directory"
   file:
