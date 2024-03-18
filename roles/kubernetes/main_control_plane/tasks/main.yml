@@ -84,3 +84,10 @@
 
 - name: Apply cni network plugin (Flannel)
   ansible.builtin.shell: kubectl --kubeconfig /etc/kubernetes/admin.conf apply -f kube-flannel.yml
+
+- name: Fetch config file from control plane
+  ansible.builtin.fetch:
+    src: /etc/kubernetes/admin.conf
+    dest: ./admin.conf
+    flat: yes
+    fail_on_missing: yes
