@@ -43,3 +43,15 @@
     - net.ipv4.ip_forward=1
     - net.bridge.bridge-nf-call-iptables=1
     - net.bridge.bridge-nf-call-ip6tables=1
+
+- name: Enable and start cri-o service
+  service:
+    name: crio
+    enabled: yes
+    state: started
+
+- name: Enable and start kubelet service
+  service:
+    name: kubelet
+    enabled: yes
+    state: started

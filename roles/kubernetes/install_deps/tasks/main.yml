@@ -33,15 +33,3 @@
     state: present
     disablerepo: "*"
     disable_gpg_check: true
-
-- name: Enable and start cri-o service
-  service:
-    name: crio
-    enabled: yes
-    state: started
-
-- name: Enable and start kubelet service
-  service:
-    name: kubelet
-    enabled: yes
-    state: started
