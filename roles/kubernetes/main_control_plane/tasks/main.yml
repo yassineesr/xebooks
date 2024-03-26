@@ -53,9 +53,8 @@
 - name: Start kubeadm init on first control plane
   ansible.builtin.shell: |
     kubeadm init \
-    --pod-network-cidr=10.244.0.0/16 \
     --image-repository {{hostvars[groups['container_registry'][0]]['ansible_host']}} \
-    --control-plane-endpoint {{hostvars[groups['load_balancer'][0]]['ansible_host']}} \
+    --control-plane-endpoint {{ vrrp_ip }} \
     --cri-socket unix:///var/run/crio/crio.sock \
     --upload-certs \
     --kubernetes-version v1.29.2 \
@@ -77,13 +76,13 @@
   ansible.builtin.set_fact:
     node_join_command: "{{ node_join_command.stdout_lines[0] }}"
 
-- name: Copy flannel manifest template to host (With private registry)
-  ansible.builtin.template:
-    src: "kube-flannel.yml.j2"
-    dest: "kube-flannel.yml"
+# - name: Copy flannel manifest template to host (With private registry)
+#   ansible.builtin.template:
+#     src: "kube-flannel.yml.j2"
+#     dest: "kube-flannel.yml"
 
-- name: Apply cni network plugin (Flannel)
-  ansible.builtin.shell: kubectl --kubeconfig /etc/kubernetes/admin.conf apply -f kube-flannel.yml
+# - name: Apply cni network plugin (Flannel)
+#   ansible.builtin.shell: kubectl --kubeconfig /etc/kubernetes/admin.conf apply -f kube-flannel.yml
 
 - name: Fetch config file from control plane
   ansible.builtin.fetch:

@@ -1,19 +1,19 @@
 - name: "Create tmp directory"
   file:
-    path: "{{ tmp_dir }}/packages/"
+    path: "{{ tmp_dir }}/ssl-packages/"
     state: directory
     mode: 0755
 
 - name: Copy rpm packages to temp directory
   copy:
     src: "{{ item }}"
-    dest: "{{ tmp_dir }}/packages/"
+    dest: "{{ tmp_dir }}/ssl-packages/"
   with_fileglob:
     - "*.rpm"
 
 - name: Find all rpm files in the directory
   find:
-    paths: "{{ tmp_dir }}/packages/"
+    paths: "{{ tmp_dir }}/ssl-packages/"
     patterns: "*.rpm"
   register: rpm_files
 
