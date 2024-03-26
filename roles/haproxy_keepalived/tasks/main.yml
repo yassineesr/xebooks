@@ -1,20 +1,20 @@
 ---
 - name: "Create tmp directory"
   file:
-    path: "{{ tmp_dir }}/packages/"
+    path: "{{ tmp_dir }}/keepalived/"
     state: directory
     mode: 0755
 
 - name: Copy rpm packages to temp directory
   copy:
     src: "{{ item }}"
-    dest: "{{ tmp_dir }}/packages/"
+    dest: "{{ tmp_dir }}/keepalived/"
   with_fileglob:
     - "*.rpm"
 
 - name: Find all rpm files in the directory
   find:
-    paths: "{{ tmp_dir }}/packages/"
+    paths: "{{ tmp_dir }}/keepalived/"
     patterns: "*.rpm"
   register: rpm_files
 
@@ -41,8 +41,20 @@
     state: on
     persistent: yes
 
-- name: Enable and start haproxy service
+# - name: Enable and start haproxy service
+#   service:
+#     name: haproxy
+#     enabled: yes
+#     state: started
+
+- name: Copy keepalived.conf to /etc/keepalived/keepalived.conf
+  template:
+    src: "keepalived.conf.j2"
+    dest: "/etc/keepalived/keepalived.conf"
+    mode: 0644
+
+- name: Enable and start keepalived service
   service:
-    name: haproxy
+    name: keepalived
     enabled: yes
     state: started
