@@ -56,6 +56,8 @@
         src: "77c1250c26d9",
         dest: "127.0.0.1/flannel-cni-plugin:v1.4.0-flannel1",
       }
+    - { src: "ee1b5fd4c83a", dest: "127.0.0.1/cilium/operator-generic:v1.15.3" }
+    - { src: "1272788a112d", dest: "127.0.0.1/cilium/cilium:v1.15.3" }
 
 - name: Push the images
   community.docker.docker_image_push:
@@ -73,3 +75,5 @@
         src: "77c1250c26d9",
         dest: "127.0.0.1/flannel-cni-plugin:v1.4.0-flannel1",
       }
+    - { src: "ee1b5fd4c83a", dest: "127.0.0.1/cilium/operator-generic:v1.15.3" }
+    - { src: "1272788a112d", dest: "127.0.0.1/cilium/cilium:v1.15.3" }
