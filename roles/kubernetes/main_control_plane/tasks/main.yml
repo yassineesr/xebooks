@@ -84,6 +84,35 @@
 # - name: Apply cni network plugin (Flannel)
 #   ansible.builtin.shell: kubectl --kubeconfig /etc/kubernetes/admin.conf apply -f kube-flannel.yml
 
+- name: Copy cilium manifest directory to host
+  ansible.builtin.copy:
+    src: "cilium"
+    dest: "/tmp"
+
+- name: Get all the files recursively from /tmp/cilium
+  ansible.builtin.find:
+    paths: "/tmp/cilium"
+    recurse: yes
+    patterns: "*.yaml"
+  register: cilium_files
+
+- name: Replace all the 'quay.io' occurrences with the private registry recursively
+  ansible.builtin.replace:
+    path: "{{ item }}"
+    regexp: "quay.io"
+    replace: "{{ hostvars[groups['container_registry'][0]]['ansible_host'] }}"
+  with_items: "{{ cilium_files.files | map(attribute='path') | list }}"
+
+- name: Replace all the hash occurrences with the private registry recursively
+  ansible.builtin.replace:
+    path: "{{ item }}"
+    regexp: '@sha256:\w*'
+    replace: ""
+  with_items: "{{ cilium_files.files | map(attribute='path') | list }}"
+
+- name: Apply cni network plugin (Cilium)
+  ansible.builtin.shell: find /tmp/cilium -type f -name '*.yaml' -exec kubectl --kubeconfig /etc/kubernetes/admin.conf apply -f {} \;
+
 - name: Fetch config file from control plane
   ansible.builtin.fetch:
     src: /etc/kubernetes/admin.conf
