@@ -60,3 +60,9 @@
   become: yes
   roles:
     - kubernetes/join_workers
+
+- hosts: control_planes[0]
+  gather_facts: yes
+  become: yes
+  roles:
+    - kubernetes/metallb

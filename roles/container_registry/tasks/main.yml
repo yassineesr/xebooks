@@ -51,13 +51,10 @@
     - { src: "9344fce2372f", dest: "127.0.0.1/kube-proxy:v1.29.2" }
     - { src: "6fc5e6b7218c", dest: "127.0.0.1/kube-scheduler:v1.29.2" }
     - { src: "138fb5a3a2e3", dest: "127.0.0.1/kube-controller-manager:v1.29.2" }
-    - { src: "f6f0ee58f497", dest: "127.0.0.1/flannel:v0.24.3" }
-    - {
-        src: "77c1250c26d9",
-        dest: "127.0.0.1/flannel-cni-plugin:v1.4.0-flannel1",
-      }
     - { src: "ee1b5fd4c83a", dest: "127.0.0.1/cilium/operator-generic:v1.15.3" }
     - { src: "1272788a112d", dest: "127.0.0.1/cilium/cilium:v1.15.3" }
+    - { src: "50a752c324f2", dest: "127.0.0.1/metallb/controller:v0.14.4" }
+    - { src: "666c5d58d2fc", dest: "127.0.0.1/metallb/speaker:v0.14.4" }
 
 - name: Push the images
   community.docker.docker_image_push:
@@ -70,10 +67,7 @@
     - { src: "9344fce2372f", dest: "127.0.0.1/kube-proxy:v1.29.2" }
     - { src: "6fc5e6b7218c", dest: "127.0.0.1/kube-scheduler:v1.29.2" }
     - { src: "138fb5a3a2e3", dest: "127.0.0.1/kube-controller-manager:v1.29.2" }
-    - { src: "f6f0ee58f497", dest: "127.0.0.1/flannel:v0.24.3" }
-    - {
-        src: "77c1250c26d9",
-        dest: "127.0.0.1/flannel-cni-plugin:v1.4.0-flannel1",
-      }
     - { src: "ee1b5fd4c83a", dest: "127.0.0.1/cilium/operator-generic:v1.15.3" }
     - { src: "1272788a112d", dest: "127.0.0.1/cilium/cilium:v1.15.3" }
+    - { src: "50a752c324f2", dest: "127.0.0.1/metallb/controller:v0.14.4" }
+    - { src: "666c5d58d2fc", dest: "127.0.0.1/metallb/speaker:v0.14.4" }

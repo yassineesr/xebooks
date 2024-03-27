@@ -1,0 +1,14 @@
+---
+- name: Patch kube-proxy strict ARP
+  ansible.builtin.shell: |
+    kubectl --kubeconfig /etc/kubernetes/admin.conf get configmap kube-proxy -n kube-system -o yaml | \
+    sed -e "s/strictARP: false/strictARP: true/" | \
+    kubectl apply --kubeconfig /etc/kubernetes/admin.conf -f - -n kube-system
+
+- name: Copy metallb-native manifest directory to host
+  ansible.builtin.template:
+    src: "metallb-native.yaml.j2"
+    dest: "/tmp/metallb-native.yaml"
+
+- name: Apply metallb-native
+  ansible.builtin.shell: kubectl --kubeconfig /etc/kubernetes/admin.conf apply -f /tmp/metallb-native.yaml
