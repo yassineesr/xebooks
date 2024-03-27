@@ -1,8 +1,30 @@
 ---
-- hosts: all
+- hosts: control_planes
   gather_facts: yes
   become: yes
   tasks:
-    - name: Removing default route
-      ansible.builtin.shell: ip route del default
-      ignore_errors: yes
+    - name: Copy cilium manifest directory to host
+      ansible.builtin.copy:
+        src: "cilium"
+        dest: "/tmp"
+
+    - name: Get all the files recursively from /tmp/cilium
+      ansible.builtin.find:
+        paths: "/tmp/cilium"
+        recurse: yes
+        patterns: "*.yaml"
+      register: cilium_files
+
+    - name: Replace all the 'quay.io' occurrences with the private registry recursively
+      ansible.builtin.replace:
+        path: "{{ item }}"
+        regexp: "quay.io"
+        replace: "{{ hostvars[groups['container_registry'][0]]['ansible_host'] }}"
+      with_items: "{{ cilium_files.files | map(attribute='path') | list }}"
+
+    - name: Replace all the hash occurrences with the private registry recursively
+      ansible.builtin.replace:
+        path: "{{ item }}"
+        regexp: '@sha256:\w*'
+        replace: ""
+      with_items: "{{ cilium_files.files | map(attribute='path') | list }}"

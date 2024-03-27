@@ -24,11 +24,11 @@
     - docker
     - container_registry
 
-- hosts: load_balancer
+- hosts: control_planes
   gather_facts: yes
   become: yes
   roles:
-    - haproxy
+    - haproxy_keepalived
 
 - hosts: control_planes,nodes
   gather_facts: yes
@@ -60,4 +60,3 @@
   become: yes
   roles:
     - kubernetes/join_workers
-
