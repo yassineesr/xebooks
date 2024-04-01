@@ -6,31 +6,58 @@
 # - name: Apply cni network plugin (Flannel)
 #   ansible.builtin.shell: kubectl --kubeconfig /etc/kubernetes/admin.conf apply -f kube-flannel.yml
 
-- name: Copy cilium manifest directory to host
-  ansible.builtin.copy:
-    src: "cilium"
-    dest: "/tmp"
+#- name: Copy cilium manifest directory to host
+#  ansible.builtin.copy:
+#     src: "cilium"
+#     dest: "/tmp"
 
-- name: Get all the files recursively from /tmp/cilium
-  ansible.builtin.find:
-    paths: "/tmp/cilium"
-    recurse: yes
-    patterns: "*.yaml"
-  register: cilium_files
+# - name: Get all the files recursively from /tmp/cilium
+#   ansible.builtin.find:
+#     paths: "/tmp/cilium"
+#     recurse: yes
+#     patterns: "*.yaml"
+#   register: cilium_files
+
+# - name: Replace all the 'quay.io' occurrences with the private registry recursively
+#   ansible.builtin.replace:
+#     path: "{{ item }}"
+#     regexp: "quay.io"
+#     replace: "{{ hostvars[groups['container_registry'][0]]['ansible_host'] }}"
+#   with_items: "{{ cilium_files.files | map(attribute='path') | list }}"
+
+# - name: Replace all the hash occurrences with the private registry recursively
+#   ansible.builtin.replace:
+#     path: "{{ item }}"
+#     regexp: '@sha256:\w*'
+#     replace: ""
+#   with_items: "{{ cilium_files.files | map(attribute='path') | list }}"
+
+# - name: Apply cni network plugin (Cilium)
+#   ansible.builtin.shell: find /tmp/cilium -type f -name '*.yaml' -exec kubectl --kubeconfig /etc/kubernetes/admin.conf apply -f {} \;
+
+- name: Extract Cilium chart
+  ansible.builtin.unarchive:
+    src: cilium-1.15.3.tgz
+    dest: /tmp
+    creates: /tmp/cilium
+
+- name: Extract Helm build
+  ansible.builtin.unarchive:
+    src: helm-v3.14.3-linux-amd64.tar.gz
+    dest: /tmp
+    creates: /tmp/linux-amd64/helm
 
 - name: Replace all the 'quay.io' occurrences with the private registry recursively
   ansible.builtin.replace:
-    path: "{{ item }}"
+    path: "/tmp/cilium/values.yaml"
     regexp: "quay.io"
     replace: "{{ hostvars[groups['container_registry'][0]]['ansible_host'] }}"
-  with_items: "{{ cilium_files.files | map(attribute='path') | list }}"
 
-- name: Replace all the hash occurrences with the private registry recursively
+- name: Replace all the 'useDigest true' occurrences to false
   ansible.builtin.replace:
-    path: "{{ item }}"
-    regexp: '@sha256:\w*'
-    replace: ""
-  with_items: "{{ cilium_files.files | map(attribute='path') | list }}"
+    path: "/tmp/cilium/values.yaml"
+    regexp: "useDigest: true"
+    replace: "useDigest: false"
 
-- name: Apply cni network plugin (Cilium)
-  ansible.builtin.shell: find /tmp/cilium -type f -name '*.yaml' -exec kubectl --kubeconfig /etc/kubernetes/admin.conf apply -f {} \;
+- name: Apply the Helm chart
+  ansible.builtin.shell: /tmp/linux-amd64/helm --kubeconfig /etc/kubernetes/admin.conf install cilium /tmp/cilium --namespace kube-system

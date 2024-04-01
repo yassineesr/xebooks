@@ -49,6 +49,12 @@
   roles:
     - kubernetes/main_control_plane
 
+- hosts: control_planes[0]
+  gather_facts: yes
+  become: yes
+  roles:
+    - kubernetes/cni
+
 - hosts: control_planes[1:]
   gather_facts: yes
   become: yes
