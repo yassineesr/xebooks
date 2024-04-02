@@ -26,5 +26,4 @@ for entry in manifest:
         print(f"Checksum mismatch for {entry['name']}")
         exit(1)
     stdout.write("\r\033[K")
-    print(f"✅ Checksum matches for {entry['name']}")
-
+    print(f"✅ Checksum matches for {os.path.join('roles', entry['role'], 'files', entry['name'])}")
