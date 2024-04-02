@@ -1,0 +1,773 @@
+[
+  {
+    "name": "cilium-cilium-v1.15.3.tar.gz",
+    "url": "https://xenedium-k8s.fra1.cdn.digitaloceanspaces.com/cilium-cilium-v1.15.3.tar.gz",
+    "type": "image",
+    "checksum": "b9ca41521b464188e767a465fd991fbb4530cfd886457c4c69089bd7dc7fd85a",
+    "role": "container_registry"
+  },
+  {
+    "name": "psmisc-23.4-3.el9.x86_64.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/BaseOS/x86_64/os/Packages/psmisc-23.4-3.el9.x86_64.rpm",
+    "type": "rpm",
+    "checksum": "e02fc28d42912689b006fcc1e98bdb5b0eefba538eb024c4e00ec9adc348449d",
+    "role": "haproxy_keepalived"
+  },
+  {
+    "name": "slirp4netns-1.2.3-1.el9.x86_64.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/slirp4netns-1.2.3-1.el9.x86_64.rpm",
+    "type": "rpm",
+    "checksum": "36026dd4b39565bada04a0202c7d92ae1bb85066988fd701048a28ea47ed3d02",
+    "role": "docker"
+  },
+  {
+    "name": "registry-2.8.3.tar.gz",
+    "url": "https://xenedium-k8s.fra1.cdn.digitaloceanspaces.com/registry-2.8.3.tar.gz",
+    "type": "image",
+    "checksum": "2ed60bf52ff047b6b9625fa6b2fab1aedff68c8482b46b3ffe5e3b4a28b6c0dd",
+    "role": "container_registry"
+  },
+  {
+    "name": "python3-cffi-1.14.5-5.el9.x86_64.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/BaseOS/x86_64/os/Packages/python3-cffi-1.14.5-5.el9.x86_64.rpm",
+    "type": "rpm",
+    "checksum": "20d71246322d50a6c12826b612c8f66045cbc8327748ae7503f8e6b38ac97cef",
+    "role": "install_ssl_deps"
+  },
+  {
+    "name": "perl-podlators-4.14-460.el9.noarch.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/perl-podlators-4.14-460.el9.noarch.rpm",
+    "type": "rpm",
+    "checksum": "aac9b4c1ccd942afaec19299880eb89e1889b4531e7cab751c3be6a66f9c5fa6",
+    "role": "haproxy_keepalived"
+  },
+  {
+    "name": "perl-Symbol-1.08-481.el9.noarch.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/perl-Symbol-1.08-481.el9.noarch.rpm",
+    "type": "rpm",
+    "checksum": "ae09bd7adc2d490c6d09ddc2ecc4a012e5e740f1d7785390af1e810cc2d0e41c",
+    "role": "haproxy_keepalived"
+  },
+  {
+    "name": "perl-vars-1.05-481.el9.noarch.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/perl-vars-1.05-481.el9.noarch.rpm",
+    "type": "rpm",
+    "checksum": "36e5771fb53423efdd1875f034a4d7e08434a5780ab7be45fb6e32925e68b1ad",
+    "role": "haproxy_keepalived"
+  },
+  {
+    "name": "perl-Getopt-Std-1.12-481.el9.noarch.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/perl-Getopt-Std-1.12-481.el9.noarch.rpm",
+    "type": "rpm",
+    "checksum": "6694398c32de4a6f27904be25c4b76536ed9f0c9781c946ad48a41d39f067a05",
+    "role": "haproxy_keepalived"
+  },
+  {
+    "name": "perl-File-stat-1.09-481.el9.noarch.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/perl-File-stat-1.09-481.el9.noarch.rpm",
+    "type": "rpm",
+    "checksum": "93e3e03bd8bdf7df40657e591daa94671ff3576cd88954e054e47adc27032c8e",
+    "role": "haproxy_keepalived"
+  },
+  {
+    "name": "cri-tools-1.29.0-150500.1.1.x86_64.rpm",
+    "url": "https://pkgs.k8s.io/core:/stable:/v1.29/rpm/x86_64/cri-tools-1.29.0-150500.1.1.x86_64.rpm",
+    "type": "rpm",
+    "checksum": "855b1b782b764892e08292bc48bc799804610a2892cacd036ebc3390252434e7",
+    "role": "kubernetes/install_deps"
+  },
+  {
+    "name": "perl-PathTools-3.78-461.el9.x86_64.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/perl-PathTools-3.78-461.el9.x86_64.rpm",
+    "type": "rpm",
+    "checksum": "0ef613a8fe3d9e2355a7b063f1cd5d019772c837e2435c9efcd7ea925ad27024",
+    "role": "haproxy_keepalived"
+  },
+  {
+    "name": "perl-NDBM_File-1.15-481.el9.x86_64.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/perl-NDBM_File-1.15-481.el9.x86_64.rpm",
+    "type": "rpm",
+    "checksum": "17b1aaca1c417c0a16f5573e0ac159b5b4bcd2b3d2ccd1d5a91cc5c5670abbd3",
+    "role": "haproxy_keepalived"
+  },
+  {
+    "name": "fuse-overlayfs-1.13-1.el9.x86_64.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/fuse-overlayfs-1.13-1.el9.x86_64.rpm",
+    "type": "rpm",
+    "checksum": "89cf6c5a2c0d4d7b578565bedb73b07879fa575365753d303d888e774dd2611b",
+    "role": "docker"
+  },
+  {
+    "name": "docker-ce-25.0.4-1.el9.x86_64.rpm",
+    "url": "https://download.docker.com/linux/centos/9/x86_64/stable/Packages/docker-ce-25.0.4-1.el9.x86_64.rpm",
+    "type": "rpm",
+    "checksum": "135f562653c98d00f806c0c1c386a350250072498b537ff1f45291b935ecf01f",
+    "role": "docker"
+  },
+  {
+    "name": "docker-ce-cli-25.0.4-1.el9.x86_64.rpm",
+    "url": "https://download.docker.com/linux/centos/9/x86_64/stable/Packages/docker-ce-cli-25.0.4-1.el9.x86_64.rpm",
+    "type": "rpm",
+    "checksum": "f21dd7b7b60a315d33a2db218ec1005bcb2d957d8ea727309b11fc99c15c363e",
+    "role": "docker"
+  },
+  {
+    "name": "perl-IPC-Open3-1.21-481.el9.noarch.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/perl-IPC-Open3-1.21-481.el9.noarch.rpm",
+    "type": "rpm",
+    "checksum": "56f9cc438951140a1aa2662556c1259d9a2b4d80d8e11e756165e72e29d61cb3",
+    "role": "haproxy_keepalived"
+  },
+  {
+    "name": "perl-MIME-Base64-3.16-4.el9.x86_64.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/perl-MIME-Base64-3.16-4.el9.x86_64.rpm",
+    "type": "rpm",
+    "checksum": "ce4d4eeb8e4524212437ac964d9f0b6ba562c7064a7bf976bec5836e87e20cd2",
+    "role": "haproxy_keepalived"
+  },
+  {
+    "name": "perl-Socket-2.031-4.el9.x86_64.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/perl-Socket-2.031-4.el9.x86_64.rpm",
+    "type": "rpm",
+    "checksum": "356cc16228b97a64af8b2548661ab69277b32a30663da29727ee62a2503c3cec",
+    "role": "haproxy_keepalived"
+  },
+  {
+    "name": "libnetfilter_cttimeout-1.0.0-19.el9.x86_64.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/libnetfilter_cttimeout-1.0.0-19.el9.x86_64.rpm",
+    "type": "rpm",
+    "checksum": "175839b98ffa2f7c99a6734d0c98913e5a6f29f2f7ff079743ac8ca5db9b6fdb",
+    "role": "kubernetes/install_deps"
+  },
+  {
+    "name": "perl-Term-ANSIColor-5.01-461.el9.noarch.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/perl-Term-ANSIColor-5.01-461.el9.noarch.rpm",
+    "type": "rpm",
+    "checksum": "d4e87c795780fa190baba5291c390e9af304e4f134e4aa4f2d03fc9b91ca5d60",
+    "role": "haproxy_keepalived"
+  },
+  {
+    "name": "iptables-nft-1.8.10-2.el9.x86_64.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/BaseOS/x86_64/os/Packages/iptables-nft-1.8.10-2.el9.x86_64.rpm",
+    "type": "rpm",
+    "checksum": "964899d1c3c7d322230b3c4418e0951cebffa22ed39288013822d234e441b28d",
+    "role": "docker"
+  },
+  {
+    "name": "perl-Class-Struct-0.66-481.el9.noarch.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/perl-Class-Struct-0.66-481.el9.noarch.rpm",
+    "type": "rpm",
+    "checksum": "74119bd904503f9c57cbc2c254b14e08406115a04c1253e2207372cab59be1ee",
+    "role": "haproxy_keepalived"
+  },
+  {
+    "name": "perl-mro-1.23-481.el9.x86_64.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/perl-mro-1.23-481.el9.x86_64.rpm",
+    "type": "rpm",
+    "checksum": "5a6f47a06e17462e8950ef058b570acba679f3d2afda3f08a3e83fc86b9ff6c6",
+    "role": "haproxy_keepalived"
+  },
+  {
+    "name": "perl-Text-Tabs+Wrap-2013.0523-460.el9.noarch.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/perl-Text-Tabs+Wrap-2013.0523-460.el9.noarch.rpm",
+    "type": "rpm",
+    "checksum": "11966231d2834b2a9c2c0bf2af231e1257ce030da1cfecdd16d08a6a23222b24",
+    "role": "haproxy_keepalived"
+  },
+  {
+    "name": "fuse-common-3.10.2-8.el9.x86_64.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/BaseOS/x86_64/os/Packages/fuse-common-3.10.2-8.el9.x86_64.rpm",
+    "type": "rpm",
+    "checksum": "a370c1adf4718f5172a812b72471cc5fcaa69825441e443193f30db31ecde54b",
+    "role": "docker"
+  },
+  {
+    "name": "perl-overloading-0.02-481.el9.noarch.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/perl-overloading-0.02-481.el9.noarch.rpm",
+    "type": "rpm",
+    "checksum": "50a627c576ff19b6dda692c92b421cad7a85157cd71d393752acc623f7f89580",
+    "role": "haproxy_keepalived"
+  },
+  {
+    "name": "kube-proxy-v1.29.2.tar.gz",
+    "url": "https://xenedium-k8s.fra1.cdn.digitaloceanspaces.com/kube-proxy-v1.29.2.tar.gz",
+    "type": "image",
+    "checksum": "274b4e780e1d76dab595f688dc5891bf64f03e0251e0031ba019b7704e0fa25c",
+    "role": "container_registry"
+  },
+  {
+    "name": "perl-B-1.80-481.el9.x86_64.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/perl-B-1.80-481.el9.x86_64.rpm",
+    "type": "rpm",
+    "checksum": "df7b0c3048ffbe05d0ff6dafc45f0af7da189579204c3be8d2872a04a6794dff",
+    "role": "haproxy_keepalived"
+  },
+  {
+    "name": "perl-Text-ParseWords-3.30-460.el9.noarch.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/perl-Text-ParseWords-3.30-460.el9.noarch.rpm",
+    "type": "rpm",
+    "checksum": "1264dd35d5deda51b4431955b2838cd18e0012dc27f0e0cb65061324216ff22c",
+    "role": "haproxy_keepalived"
+  },
+  {
+    "name": "haproxy-2.4.22-3.el9.x86_64.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/haproxy-2.4.22-3.el9.x86_64.rpm",
+    "type": "rpm",
+    "checksum": "27a58e9ae28d7f4de2536ccac3ea6bca02008689290d41087c6f62a1611b6e5e",
+    "role": "haproxy_keepalived"
+  },
+  {
+    "name": "perl-AutoLoader-5.74-481.el9.noarch.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/perl-AutoLoader-5.74-481.el9.noarch.rpm",
+    "type": "rpm",
+    "checksum": "f0bcf4a04a62b163c6c80006d604117cf5a825756ce39ef1bd0818ae848aa2cf",
+    "role": "haproxy_keepalived"
+  },
+  {
+    "name": "net-snmp-agent-libs-5.9.1-13.el9.x86_64.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/net-snmp-agent-libs-5.9.1-13.el9.x86_64.rpm",
+    "type": "rpm",
+    "checksum": "b483537cf0726a61315d9973bfaaad5668bba80d89a9d0cf0a10722ed644c0c2",
+    "role": "haproxy_keepalived"
+  },
+  {
+    "name": "perl-Mozilla-CA-20200520-6.el9.noarch.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/perl-Mozilla-CA-20200520-6.el9.noarch.rpm",
+    "type": "rpm",
+    "checksum": "27dfc72f604506654c671d164852668094da5e817e84b8192f21e29429a59838",
+    "role": "haproxy_keepalived"
+  },
+  {
+    "name": "perl-overload-1.31-481.el9.noarch.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/perl-overload-1.31-481.el9.noarch.rpm",
+    "type": "rpm",
+    "checksum": "9831611e4c117f4aae928eca474f677f325300e32dd4f793d218bbb36c0f8dc5",
+    "role": "haproxy_keepalived"
+  },
+  {
+    "name": "python3-cryptography-36.0.1-4.el9.x86_64.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/BaseOS/x86_64/os/Packages/python3-cryptography-36.0.1-4.el9.x86_64.rpm",
+    "type": "rpm",
+    "checksum": "a01572771cd3c8e024d92ca175cd5d16c5f4ce691491498967473a4722ce2210",
+    "role": "install_ssl_deps"
+  },
+  {
+    "name": "libnetfilter_queue-1.0.5-1.el9.x86_64.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/libnetfilter_queue-1.0.5-1.el9.x86_64.rpm",
+    "type": "rpm",
+    "checksum": "84098f1138bed98af28ab42b708f85dd28035ad648b300328fec74fd8e3957ba",
+    "role": "kubernetes/install_deps"
+  },
+  {
+    "name": "metallb-speaker-v0.14.4.tar.gz",
+    "url": "https://xenedium-k8s.fra1.cdn.digitaloceanspaces.com/metallb-speaker-v0.14.4.tar.gz",
+    "type": "image",
+    "checksum": "549b8051be2f28141b1a9e0cfd951df49d2eabf83f1a31523181e7fab5efc269",
+    "role": "container_registry"
+  },
+  {
+    "name": "perl-Encode-3.08-462.el9.x86_64.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/perl-Encode-3.08-462.el9.x86_64.rpm",
+    "type": "rpm",
+    "checksum": "85db7859711b30f268305ad0b3cdab68c8072fdf6ba60725a49657d6ae001bea",
+    "role": "haproxy_keepalived"
+  },
+  {
+    "name": "perl-Storable-3.21-460.el9.x86_64.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/perl-Storable-3.21-460.el9.x86_64.rpm",
+    "type": "rpm",
+    "checksum": "027c042137acf66ded0de52859610be36373ccd555dc30a865a31267c22c5579",
+    "role": "haproxy_keepalived"
+  },
+  {
+    "name": "perl-IO-1.43-481.el9.x86_64.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/perl-IO-1.43-481.el9.x86_64.rpm",
+    "type": "rpm",
+    "checksum": "127c53f8c005ee3098e52e197ae1c7ffbfc6c35373de7d43c1c042932f148d9b",
+    "role": "haproxy_keepalived"
+  },
+  {
+    "name": "kubectl-1.29.2-150500.1.1.x86_64.rpm",
+    "url": "https://pkgs.k8s.io/core:/stable:/v1.29/rpm/x86_64/kubectl-1.29.2-150500.1.1.x86_64.rpm",
+    "type": "rpm",
+    "checksum": "10ac6ab583253ab8a00f015cbc90a925f0f2a9aeabc8fc0c6df978d5600e8374",
+    "role": "kubernetes/install_deps"
+  },
+  {
+    "name": "libslirp-4.4.0-7.el9.x86_64.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/libslirp-4.4.0-7.el9.x86_64.rpm",
+    "type": "rpm",
+    "checksum": "4d7383a18c393e909d037f64c35a8d5d01c559032a3bd760a77844986d57062a",
+    "role": "docker"
+  },
+  {
+    "name": "kubernetes-cni-1.3.0-150500.1.1.x86_64.rpm",
+    "url": "https://pkgs.k8s.io/core:/stable:/v1.29/rpm/x86_64/kubernetes-cni-1.3.0-150500.1.1.x86_64.rpm",
+    "type": "rpm",
+    "checksum": "496dea64755b7c5d86932b98526a67ce3ca1560cbd62f57af1860d23611a825e",
+    "role": "kubernetes/install_deps"
+  },
+  {
+    "name": "perl-FileHandle-2.03-481.el9.noarch.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/perl-FileHandle-2.03-481.el9.noarch.rpm",
+    "type": "rpm",
+    "checksum": "8424b7cec06428cfbe888d9d9a68a752dfd78466dbcb4e86114469fb034584d0",
+    "role": "haproxy_keepalived"
+  },
+  {
+    "name": "perl-Pod-Simple-3.42-4.el9.noarch.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/perl-Pod-Simple-3.42-4.el9.noarch.rpm",
+    "type": "rpm",
+    "checksum": "4b70575a9f0ebc0f0026681112532243b0699ca7dc5dcb165cef856adc1ec0d8",
+    "role": "haproxy_keepalived"
+  },
+  {
+    "name": "perl-Data-Dumper-2.174-462.el9.x86_64.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/perl-Data-Dumper-2.174-462.el9.x86_64.rpm",
+    "type": "rpm",
+    "checksum": "f979d2efed136001fe0d54632b626b53842c281f9354408e0f7c75bcfc408f67",
+    "role": "haproxy_keepalived"
+  },
+  {
+    "name": "docker-compose-plugin-2.24.7-1.el9.x86_64.rpm",
+    "url": "https://download.docker.com/linux/centos/9/x86_64/stable/Packages/docker-compose-plugin-2.24.7-1.el9.x86_64.rpm",
+    "type": "rpm",
+    "checksum": "c6c879fa47661a0e547058dfa497c16a51fa39a0c13cd696d22bfdac27cffa9a",
+    "role": "docker"
+  },
+  {
+    "name": "net-snmp-libs-5.9.1-13.el9.x86_64.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/net-snmp-libs-5.9.1-13.el9.x86_64.rpm",
+    "type": "rpm",
+    "checksum": "26bd321d93bee915ce5b6c79401e9fe8535d2d7885042ca8a015c8e529c46f30",
+    "role": "haproxy_keepalived"
+  },
+  {
+    "name": "perl-File-Basename-2.85-481.el9.noarch.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/perl-File-Basename-2.85-481.el9.noarch.rpm",
+    "type": "rpm",
+    "checksum": "c78ac06d4f6eb825091d3e3dae448a429cb4711b1ddf6c75fdf00946ec09fd7d",
+    "role": "haproxy_keepalived"
+  },
+  {
+    "name": "perl-Term-Cap-1.17-460.el9.noarch.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/perl-Term-Cap-1.17-460.el9.noarch.rpm",
+    "type": "rpm",
+    "checksum": "5c38c53e562f24cbdb395b11358efaaf6aee82ccd385055c5ffcf1843593d8da",
+    "role": "haproxy_keepalived"
+  },
+  {
+    "name": "metallb-controller-v0.14.4.tar.gz",
+    "url": "https://xenedium-k8s.fra1.cdn.digitaloceanspaces.com/metallb-controller-v0.14.4.tar.gz",
+    "type": "image",
+    "checksum": "69cf2b9162cd7a7a775cd5f09cf3da8f272d78f02494182c131061fc976fd0af",
+    "role": "container_registry"
+  },
+  {
+    "name": "perl-Carp-1.50-460.el9.noarch.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/perl-Carp-1.50-460.el9.noarch.rpm",
+    "type": "rpm",
+    "checksum": "f1ca6aaa47ef96d6b47f20f3a2df2ce530228790f2c0330ece567cc77ddd5063",
+    "role": "haproxy_keepalived"
+  },
+  {
+    "name": "conntrack-tools-1.4.7-2.el9.x86_64.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/conntrack-tools-1.4.7-2.el9.x86_64.rpm",
+    "type": "rpm",
+    "checksum": "c861b98c3d1cb1cfcee3dcacbadac2fed7ccab2606cb5102b84a8cbf4c2b505f",
+    "role": "kubernetes/install_deps"
+  },
+  {
+    "name": "python3-ply-3.11-14.el9.noarch.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/BaseOS/x86_64/os/Packages/python3-ply-3.11-14.el9.noarch.rpm",
+    "type": "rpm",
+    "checksum": "8bdd378567128e37784aeda71d4f5f6cfba3bc4c6b61c8c24b8b30056b8125f0",
+    "role": "install_ssl_deps"
+  },
+  {
+    "name": "perl-Time-Local-1.300-7.el9.noarch.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/perl-Time-Local-1.300-7.el9.noarch.rpm",
+    "type": "rpm",
+    "checksum": "53f9616f9c60c8fb7befeff87f5b76c61ee75686a6c289f394c4793d3692de3b",
+    "role": "haproxy_keepalived"
+  },
+  {
+    "name": "kubeadm-1.29.2-150500.1.1.x86_64.rpm",
+    "url": "https://pkgs.k8s.io/core:/stable:/v1.29/rpm/x86_64/kubeadm-1.29.2-150500.1.1.x86_64.rpm",
+    "type": "rpm",
+    "checksum": "9d6fc753d90d143907ed3b31439530be30ee3bd860d107e4d98d72875c1d9976",
+    "role": "kubernetes/install_deps"
+  },
+  {
+    "name": "python3-pycparser-2.20-6.el9.noarch.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/BaseOS/x86_64/os/Packages/python3-pycparser-2.20-6.el9.noarch.rpm",
+    "type": "rpm",
+    "checksum": "dcddb628ce3d6ba7f53e9b2b125b54c14e03f1ef5b8a8e4c52754d2534aa38d6",
+    "role": "install_ssl_deps"
+  },
+  {
+    "name": "perl-libnet-3.13-4.el9.noarch.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/perl-libnet-3.13-4.el9.noarch.rpm",
+    "type": "rpm",
+    "checksum": "b882c8742426d278d387432a65220bd63ffd1670737aea43084994d2b638e5d4",
+    "role": "haproxy_keepalived"
+  },
+  {
+    "name": "perl-Pod-Usage-2.01-4.el9.noarch.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/perl-Pod-Usage-2.01-4.el9.noarch.rpm",
+    "type": "rpm",
+    "checksum": "2dded1efa254118c646affd59615237825f00e36b86a96a98fd59c8b6015612a",
+    "role": "haproxy_keepalived"
+  },
+  {
+    "name": "lm_sensors-libs-3.6.0-10.el9.x86_64.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/lm_sensors-libs-3.6.0-10.el9.x86_64.rpm",
+    "type": "rpm",
+    "checksum": "4a9b2c8cd29e1689e99cafa609a81cba133a473ef8c58309f6cc14b7f6a5f4f3",
+    "role": "haproxy_keepalived"
+  },
+  {
+    "name": "perl-IO-Socket-IP-0.41-5.el9.noarch.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/perl-IO-Socket-IP-0.41-5.el9.noarch.rpm",
+    "type": "rpm",
+    "checksum": "95babe1d96f2dfd85f161d3f82bb3ba4ad4a2591d0d90919132f1358377f53bf",
+    "role": "haproxy_keepalived"
+  },
+  {
+    "name": "docker-ce-rootless-extras-25.0.4-1.el9.x86_64.rpm",
+    "url": "https://download.docker.com/linux/centos/9/x86_64/stable/Packages/docker-ce-rootless-extras-25.0.4-1.el9.x86_64.rpm",
+    "type": "rpm",
+    "checksum": "e6635bc30222d961dbf2c2e952395d3589ff571dd3447d693b1a2b36293aaf13",
+    "role": "docker"
+  },
+  {
+    "name": "perl-Fcntl-1.13-481.el9.x86_64.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/perl-Fcntl-1.13-481.el9.x86_64.rpm",
+    "type": "rpm",
+    "checksum": "d2a8667eb4319d9c44aca8493c8fc84148eeb2d5e23aa22297210c1de1fd7846",
+    "role": "haproxy_keepalived"
+  },
+  {
+    "name": "keepalived-2.2.8-3.el9.x86_64.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/keepalived-2.2.8-3.el9.x86_64.rpm",
+    "type": "rpm",
+    "checksum": "a6e000ec336ec0f9a3d3e608e42f8b7df7de5da47c1b7e6c8d21a282881a35f9",
+    "role": "haproxy_keepalived"
+  },
+  {
+    "name": "perl-Scalar-List-Utils-1.56-461.el9.x86_64.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/perl-Scalar-List-Utils-1.56-461.el9.x86_64.rpm",
+    "type": "rpm",
+    "checksum": "f5c5348ff66fbb760cd67e25a0b71e3b0ef1463af3acd43e33d2f5e8ad3d2ce4",
+    "role": "haproxy_keepalived"
+  },
+  {
+    "name": "perl-Exporter-5.74-461.el9.noarch.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/perl-Exporter-5.74-461.el9.noarch.rpm",
+    "type": "rpm",
+    "checksum": "1fefc5a7bc8cd31a853c090cdaa0758344cacc56561532dfef20ab70bd30bcab",
+    "role": "haproxy_keepalived"
+  },
+  {
+    "name": "perl-Digest-1.19-4.el9.noarch.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/perl-Digest-1.19-4.el9.noarch.rpm",
+    "type": "rpm",
+    "checksum": "de4b71c1cf818d48940ca0f68f5d3c520a321affe9e33b5afd7976c811f1d741",
+    "role": "haproxy_keepalived"
+  },
+  {
+    "name": "perl-Digest-MD5-2.58-4.el9.x86_64.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/perl-Digest-MD5-2.58-4.el9.x86_64.rpm",
+    "type": "rpm",
+    "checksum": "ec7e38c29105e1502a13e8e13f9bc1b1bc02a21babf02e95a6966b40a8d8cbaa",
+    "role": "haproxy_keepalived"
+  },
+  {
+    "name": "mariadb-connector-c-config-3.2.6-1.el9.noarch.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/mariadb-connector-c-config-3.2.6-1.el9.noarch.rpm",
+    "type": "rpm",
+    "checksum": "defecb863ef8afd9e10dcdda770abea23bb8d6f507e0f5ee31ddc164f90bdbea",
+    "role": "haproxy_keepalived"
+  },
+  {
+    "name": "cri-o-1.29.2-150500.1.1.x86_64.rpm",
+    "url": "https://pkgs.k8s.io/addons:/cri-o:/stable:/v1.29/rpm/x86_64/cri-o-1.29.2-150500.1.1.x86_64.rpm",
+    "type": "rpm",
+    "checksum": "171ef385a64f4fa6e4ab1d8f9fbe89dd268ec1f3fb5c7e7a622e6266f2019fbe",
+    "role": "kubernetes/install_deps"
+  },
+  {
+    "name": "perl-interpreter-5.32.1-481.el9.x86_64.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/perl-interpreter-5.32.1-481.el9.x86_64.rpm",
+    "type": "rpm",
+    "checksum": "b40999c1ca1ab5b5f64370fa637e11fb16f8128aa8ba273e4f61847e4b83b2bd",
+    "role": "haproxy_keepalived"
+  },
+  {
+    "name": "perl-Errno-1.30-481.el9.x86_64.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/perl-Errno-1.30-481.el9.x86_64.rpm",
+    "type": "rpm",
+    "checksum": "8a770d19c48537606dd8ae50cd24c9a48f3ebe999ff9b6aa23f08602031c5ee3",
+    "role": "haproxy_keepalived"
+  },
+  {
+    "name": "kubelet-1.29.2-150500.1.1.x86_64.rpm",
+    "url": "https://pkgs.k8s.io/core:/stable:/v1.29/rpm/x86_64/kubelet-1.29.2-150500.1.1.x86_64.rpm",
+    "type": "rpm",
+    "checksum": "e30b4fe0db0ade9572a54ebc7b8cc7ec28301c339ba7f06d65088b1e774904e0",
+    "role": "haproxy_keepalived"
+  },
+  {
+    "name": "perl-File-Temp-0.231.100-4.el9.noarch.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/perl-File-Temp-0.231.100-4.el9.noarch.rpm",
+    "type": "rpm",
+    "checksum": "a1416670c051fdf7ea5e7ffac059d88e17b14a61cf75a95be6e3c6d2e730101b",
+    "role": "haproxy_keepalived"
+  },
+  {
+    "name": "perl-HTTP-Tiny-0.076-462.el9.noarch.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/perl-HTTP-Tiny-0.076-462.el9.noarch.rpm",
+    "type": "rpm",
+    "checksum": "8579bcd4112b973c3bd072db832e26c4d04eb984952892c01ef7119b18ccbf50",
+    "role": "haproxy_keepalived"
+  },
+  {
+    "name": "perl-SelectSaver-1.02-481.el9.noarch.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/perl-SelectSaver-1.02-481.el9.noarch.rpm",
+    "type": "rpm",
+    "checksum": "49802d6bc0a5053f036f9df4b543d73d3184841303d7866d801879627aad32a4",
+    "role": "haproxy_keepalived"
+  },
+  {
+    "name": "perl-IO-Socket-SSL-2.073-1.el9.noarch.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/perl-IO-Socket-SSL-2.073-1.el9.noarch.rpm",
+    "type": "rpm",
+    "checksum": "888fb6d76d4d63b3d210a5da8b046c879fcfdaefb9fd00b2a34e65305596bb58",
+    "role": "haproxy_keepalived"
+  },
+  {
+    "name": "perl-constant-1.33-461.el9.noarch.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/perl-constant-1.33-461.el9.noarch.rpm",
+    "type": "rpm",
+    "checksum": "6a25cfb9d83c69bd767be0e30de26dbc9ece902c9e848965c3378ef1405ceb6e",
+    "role": "haproxy_keepalived"
+  },
+  {
+    "name": "coredns-v1.11.1.tar.gz",
+    "url": "https://xenedium-k8s.fra1.cdn.digitaloceanspaces.com/coredns-v1.11.1.tar.gz",
+    "type": "image",
+    "checksum": "4ffb4535bded15f7b2a93342360e6cf7701416683cf381ab7b3899304ca967d7",
+    "role": "container_registry"
+  },
+  {
+    "name": "kube-scheduler-v1.29.2.tar.gz",
+    "url": "https://xenedium-k8s.fra1.cdn.digitaloceanspaces.com/kube-scheduler-v1.29.2.tar.gz",
+    "type": "image",
+    "checksum": "6245d60e30936b189df01cd8db23a8708d0dd0ebe7b6e120742337248ca44bfa",
+    "role": "container_registry"
+  },
+  {
+    "name": "socat-1.7.4.1-5.el9.x86_64.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/socat-1.7.4.1-5.el9.x86_64.rpm",
+    "type": "rpm",
+    "checksum": "e7592888787966a3b36c659fea934a09fa2ebe9118677d6068bced1e620abb04",
+    "role": "kubernetes/install_deps"
+  },
+  {
+    "name": "perl-base-2.27-481.el9.noarch.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/perl-base-2.27-481.el9.noarch.rpm",
+    "type": "rpm",
+    "checksum": "7e9df641c5022b8247d85db7daddc45812d1bf70db0c7c5d2e88d83ee2fd15ac",
+    "role": "haproxy_keepalived"
+  },
+  {
+    "name": "perl-subs-1.03-481.el9.noarch.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/perl-subs-1.03-481.el9.noarch.rpm",
+    "type": "rpm",
+    "checksum": "d7fc5bfd239714499eb2e492eeee2eb63e6173846efca39c2f42f85d2f3fa6d7",
+    "role": "haproxy_keepalived"
+  },
+  {
+    "name": "libnetfilter_cthelper-1.0.0-22.el9.x86_64.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/libnetfilter_cthelper-1.0.0-22.el9.x86_64.rpm",
+    "type": "rpm",
+    "checksum": "94b0a77ccec44be04bf0152c94773c31424b116069f4076646e88ad578804bea",
+    "role": "kubernetes/install_deps"
+  },
+  {
+    "name": "iptables-libs-1.8.10-2.el9.x86_64.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/BaseOS/x86_64/os/Packages/iptables-libs-1.8.10-2.el9.x86_64.rpm",
+    "type": "rpm",
+    "checksum": "a6ed138f68e6083633a5d7ecfcfaa21f7dbdb0afd4c16e5752f423dfcb9497d4",
+    "role": "kubernetes/install_deps"
+  },
+  {
+    "name": "perl-parent-0.238-460.el9.noarch.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/perl-parent-0.238-460.el9.noarch.rpm",
+    "type": "rpm",
+    "checksum": "342a7b84a44cd59bea045f679309ef6145a235897dedb8a9afd2d015bc17f72a",
+    "role": "haproxy_keepalived"
+  },
+  {
+    "name": "etcd-3.5.10-0.tar.gz",
+    "url": "https://xenedium-k8s.fra1.cdn.digitaloceanspaces.com/etcd-3.5.10-0.tar.gz",
+    "type": "image",
+    "checksum": "a706b51346f94ac513d44da26b3b0ab9cc978073c4b37b15825706c349e47469",
+    "role": "container_registry"
+  },
+  {
+    "name": "cilium-operator-generic-v1.15.3.tar.gz",
+    "url": "https://xenedium-k8s.fra1.cdn.digitaloceanspaces.com/cilium-operator-generic-v1.15.3.tar.gz",
+    "type": "image",
+    "checksum": "a9a810bdcd842f65858a2d52964dc3df1830b7d62d085c5a25471d16e8007d73",
+    "role": "container_registry"
+  },
+  {
+    "name": "containerd.io-1.6.28-3.1.el9.x86_64.rpm",
+    "url": "https://download.docker.com/linux/centos/9/x86_64/stable/Packages/containerd.io-1.6.28-3.1.el9.x86_64.rpm",
+    "type": "rpm",
+    "checksum": "d858b9d85de240329ca3bd061e39f04f793dacb2fc25e945c439e9f5ed50e95f",
+    "role": "docker"
+  },
+  {
+    "name": "kube-controller-manager-v1.29.2.tar.gz",
+    "url": "https://xenedium-k8s.fra1.cdn.digitaloceanspaces.com/kube-controller-manager-v1.29.2.tar.gz",
+    "type": "image",
+    "checksum": "e30d80f26eb7552f9bd71698fbd65120b6c6e3f8d252cabba9afac6aaedba0cd",
+    "role": "container_registry"
+  },
+  {
+    "name": "perl-Pod-Escapes-1.07-460.el9.noarch.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/perl-Pod-Escapes-1.07-460.el9.noarch.rpm",
+    "type": "rpm",
+    "checksum": "c32ad4f02ecad264d2337837848706cc44f0502f39d978a6c055166fcf8ce917",
+    "role": "haproxy_keepalived"
+  },
+  {
+    "name": "pause-3.9.tar.gz",
+    "url": "https://xenedium-k8s.fra1.cdn.digitaloceanspaces.com/pause-3.9.tar.gz",
+    "type": "image",
+    "checksum": "df7126ff68be802c8d146d3b28607371d1620f194fb289c7f7b709af54841bea",
+    "role": "container_registry"
+  },
+  {
+    "name": "perl-Pod-Perldoc-3.28.01-461.el9.noarch.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/perl-Pod-Perldoc-3.28.01-461.el9.noarch.rpm",
+    "type": "rpm",
+    "checksum": "fb38583786c1d851fe160de0e436ae2bb332f60e072a6e58db02b2affb9aab6c",
+    "role": "haproxy_keepalived"
+  },
+  {
+    "name": "fuse3-libs-3.10.2-8.el9.x86_64.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/fuse3-libs-3.10.2-8.el9.x86_64.rpm",
+    "type": "rpm",
+    "checksum": "d0845a1ba25e175f3db257b5d27997c190a789f544323e8a7fcc5021dd897a30",
+    "role": "docker"
+  },
+  {
+    "name": "container-selinux-2.229.0-1.el9.noarch.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/container-selinux-2.229.0-1.el9.noarch.rpm",
+    "type": "rpm",
+    "checksum": "a2ab585a4bbf6c62d569e6d53a4b6b4054d463796242b9ec22fdcdad55b08a06",
+    "role": "docker"
+  },
+  {
+    "name": "docker-buildx-plugin-0.13.0-1.el9.x86_64.rpm",
+    "url": "https://download.docker.com/linux/centos/9/x86_64/stable/Packages/docker-buildx-plugin-0.13.0-1.el9.x86_64.rpm",
+    "type": "rpm",
+    "checksum": "b36c52e34d87ca08e449b655371f34c9fc074aaba004a8753ca6a5c515478d82",
+    "role": "docker"
+  },
+  {
+    "name": "cilium-1.15.3.tgz",
+    "url": "https://xenedium-k8s.fra1.cdn.digitaloceanspaces.com/cilium-1.15.3.tgz",
+    "type": "image",
+    "checksum": "3fa1c1f09163eae175ecb255fe34ec5aa1a8e46962c43a16416f0c5a59be7c04",
+    "role": "kubernetes/cni"
+  },
+  {
+    "name": "perl-POSIX-1.94-481.el9.x86_64.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/perl-POSIX-1.94-481.el9.x86_64.rpm",
+    "type": "rpm",
+    "checksum": "d2e68e82c34d405f85e48609df07c6ae72cc65df181e2b3e0bc8139fe32a2c30",
+    "role": "haproxy_keepalived"
+  },
+  {
+    "name": "perl-URI-5.09-3.el9.noarch.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/perl-URI-5.09-3.el9.noarch.rpm",
+    "type": "rpm",
+    "checksum": "745f84fc781c84763cad8001841711d6142eb13f50e55de928d3d051a0435ef2",
+    "role": "haproxy_keepalived"
+  },
+  {
+    "name": "perl-libs-5.32.1-481.el9.x86_64.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/perl-libs-5.32.1-481.el9.x86_64.rpm",
+    "type": "rpm",
+    "checksum": "94dbe5048327048d2717eca240eb740b8ea1932e3802d865ae1dce8c4297a938",
+    "role": "haproxy_keepalived"
+  },
+  {
+    "name": "perl-File-Path-2.18-4.el9.noarch.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/perl-File-Path-2.18-4.el9.noarch.rpm",
+    "type": "rpm",
+    "checksum": "74b7f75cf3c8bf7191a8e6d88689d7aca1b1f60d56c890ead7d558a704a4a4cc",
+    "role": "haproxy_keepalived"
+  },
+  {
+    "name": "mariadb-connector-c-3.2.6-1.el9.x86_64.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/mariadb-connector-c-3.2.6-1.el9.x86_64.rpm",
+    "type": "rpm",
+    "checksum": "fff2e56d50a0cfcc85755e789e06332a3487c45451a266ffa2d23ac444aced5b",
+    "role": "haproxy_keepalived"
+  },
+  {
+    "name": "fuse3-3.10.2-8.el9.x86_64.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/fuse3-3.10.2-8.el9.x86_64.rpm",
+    "type": "rpm",
+    "checksum": "e28ad4069be81ffe715562909bcf99797723ac10180ff52588e183ee7e5bfa6a",
+    "role": "docker"
+  },
+  {
+    "name": "perl-if-0.60.800-481.el9.noarch.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/perl-if-0.60.800-481.el9.noarch.rpm",
+    "type": "rpm",
+    "checksum": "5dd5c42ecd5ac27e2a1652598cb9153788353cfb75541f58538a2590269ee7fc",
+    "role": "haproxy_keepalived"
+  },
+  {
+    "name": "perl-Net-SSLeay-1.92-2.el9.x86_64.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/perl-Net-SSLeay-1.92-2.el9.x86_64.rpm",
+    "type": "rpm",
+    "checksum": "34f4d452e12a437c28a5308a512a11331fc12e9385937486ea8d4d7deae9ad64",
+    "role": "haproxy_keepalived"
+  },
+  {
+    "name": "helm-v3.14.3-linux-amd64.tar.gz",
+    "url": "https://get.helm.sh/helm-v3.14.3-linux-amd64.tar.gz",
+    "type": "image",
+    "checksum": "3c90f24e180f8c207b8a18e5ec82cb0fa49858a7a0a86e4ed52a98398681e00b",
+    "role": "kubernetes/cni"
+  },
+  {
+    "name": "perl-Getopt-Long-2.52-4.el9.noarch.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/perl-Getopt-Long-2.52-4.el9.noarch.rpm",
+    "type": "rpm",
+    "checksum": "0053d63a5eb0bc399e2e56a2599a1a09dca20c5bcac36f713a56fec46abac391",
+    "role": "haproxy_keepalived"
+  },
+  {
+    "name": "kube-apiserver-v1.29.2.tar.gz",
+    "url": "https://xenedium-k8s.fra1.cdn.digitaloceanspaces.com/kube-apiserver-v1.29.2.tar.gz",
+    "type": "image",
+    "checksum": "51936c4d20415e8a5b1a1a5cc3c9a80d000ee73fbe51cf2189387d34f1a3ddfd",
+    "role": "container_registry"
+  },
+  {
+    "name": "libnftnl-1.2.6-2.el9.x86_64.rpm",
+    "url": "https://mirror.stream.centos.org/9-stream/BaseOS/x86_64/os/Packages/libnftnl-1.2.6-2.el9.x86_64.rpm",
+    "type": "rpm",
+    "checksum": "d9372f58fc883b7dba690154279b87772a6ad8e3f98dc3cd801ca7990e8ef04d",
+    "role": "docker"
+  }
+]
+
