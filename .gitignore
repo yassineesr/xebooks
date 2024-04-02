@@ -5,3 +5,5 @@ key.pub
 **/**.pem
 **/**.key
 admin.conf
+**/**.rpm
+**/**gz
