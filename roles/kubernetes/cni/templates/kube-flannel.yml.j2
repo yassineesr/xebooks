@@ -149,7 +149,7 @@ spec:
                   fieldPath: metadata.namespace
             - name: EVENT_QUEUE_DEPTH
               value: "5000"
-          image: "{{hostvars[groups['container_registry'][0]]['ansible_host']}}/flannel:v0.24.3"
+          image: docker.io/flannel:v0.24.3
           name: kube-flannel
           resources:
             requests:
@@ -176,7 +176,7 @@ spec:
             - /opt/cni/bin/flannel
           command:
             - cp
-          image: "{{hostvars[groups['container_registry'][0]]['ansible_host']}}/flannel-cni-plugin:v1.4.0-flannel1"
+          image: docker.io/flannel-cni-plugin:v1.4.0-flannel1
           name: install-cni-plugin
           volumeMounts:
             - mountPath: /opt/cni/bin
@@ -187,7 +187,7 @@ spec:
             - /etc/cni/net.d/10-flannel.conflist
           command:
             - cp
-          image: "{{hostvars[groups['container_registry'][0]]['ansible_host']}}/flannel:v0.24.3"
+          image: docker.io/flannel:v0.24.3
           name: install-cni
           volumeMounts:
             - mountPath: /etc/cni/net.d

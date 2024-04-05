@@ -1,0 +1,31 @@
+- name: Add known public registries hosts and point them to the private registry
+  ansible.builtin.lineinfile:
+    path: /etc/hosts
+    line: "{{ item }}"
+    create: true
+    owner: root
+    group: root
+    mode: "0644"
+  loop:
+    - "{{ hostvars[groups['container_registry'][0]]['ansible_host'] }} quay.io"
+    - "{{ hostvars[groups['container_registry'][0]]['ansible_host'] }} docker.io"
+    - "{{ hostvars[groups['container_registry'][0]]['ansible_host'] }} registry.k8s.io"
+
+
+- name: Check if /etc/cloud/templates/hosts.redhat.tmpl exists
+  ansible.builtin.stat:
+    path: /etc/cloud/templates/hosts.redhat.tmpl
+  register: hosts_template
+
+- name: Add known public registries hosts and point them to the private registry
+  ansible.builtin.lineinfile:
+    path: /etc/cloud/templates/hosts.redhat.tmpl
+    line: "{{ item }}"
+    owner: root
+    group: root
+    mode: "0644"
+  loop:
+    - "{{ hostvars[groups['container_registry'][0]]['ansible_host'] }} quay.io"
+    - "{{ hostvars[groups['container_registry'][0]]['ansible_host'] }} docker.io"
+    - "{{ hostvars[groups['container_registry'][0]]['ansible_host'] }} registry.k8s.io"
+  when: hosts_template.stat.exists

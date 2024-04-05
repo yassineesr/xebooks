@@ -1,6 +1,6 @@
 ---
-- hosts: control_planes[0]
+- hosts: all
   gather_facts: yes
   become: yes
   roles:
-    - kubernetes/cni
+    - hosts

@@ -30,6 +30,9 @@
     privatekey_path: "{{certs_dir}}/certificate.key"
     subject_alt_name:
       - "DNS:{{inventory_hostname}}"
+      - "DNS:quay.io"
+      - "DNS:docker.io"
+      - "DNS:registry.k8s.io"
       - "IP:{{ansible_default_ipv4.address}}"
       - "DNS:localhost"
       - "IP:127.0.0.1"
