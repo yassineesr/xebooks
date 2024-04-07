@@ -44,13 +44,13 @@
     - net.bridge.bridge-nf-call-iptables=1
     - net.bridge.bridge-nf-call-ip6tables=1
 
-- name: Add CRIO sandbox image
-  ansible.builtin.blockinfile:
-    path: /etc/crio/crio.conf
-    create: true
-    block: |
-      [crio.image]
-      pause_image="{{ hostvars[groups['container_registry'][0]]['ansible_host'] }}/pause:3.9"
+# - name: Add CRIO sandbox image
+#   ansible.builtin.blockinfile:
+#     path: /etc/crio/crio.conf
+#     create: true
+#     block: |
+#       [crio.image]
+#       pause_image="{{ hostvars[groups['container_registry'][0]]['ansible_host'] }}/pause:3.9"
 
 - name: Enable and start cri-o service
   service:

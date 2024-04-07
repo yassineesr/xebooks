@@ -3,4 +3,41 @@
   gather_facts: yes
   become: yes
   roles:
-    - hosts
+    - install_ssl_deps
+
+- hosts: all,!container_registry # All except the CR
+  gather_facts: yes
+  become: yes
+  roles:
+    - update_hosts
+
+- hosts: ca_server
+  gather_facts: yes
+  become: yes
+  roles:
+    - create_ca
+
+- hosts: all
+  gather_facts: yes
+  become: yes
+  roles:
+    - generate_ssl
+
+- hosts: container_registry
+  gather_facts: yes
+  become: yes
+  roles:
+    - docker
+
+- hosts: control_planes
+  gather_facts: yes
+  become: yes
+  roles:
+    - haproxy_keepalived
+
+- hosts: control_planes,nodes
+  gather_facts: yes
+  become: yes
+  roles:
+    - kubernetes/install_deps
+    - kubernetes/preconfig_nodes

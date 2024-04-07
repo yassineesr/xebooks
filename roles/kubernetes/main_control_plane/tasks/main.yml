@@ -53,7 +53,6 @@
 - name: Start kubeadm init on first control plane
   ansible.builtin.shell: |
     kubeadm init \
-    --image-repository {{hostvars[groups['container_registry'][0]]['ansible_host']}} \
     --control-plane-endpoint {{ vrrp_ip }} \
     --cri-socket unix:///var/run/crio/crio.sock \
     --upload-certs \

@@ -1,3 +1,3 @@
 ---
 - name: Pull the Kubernetes images
-  ansible.builtin.shell: kubeadm config images pull --cri-socket unix:///var/run/crio/crio.sock --image-repository {{hostvars[groups['container_registry'][0]]['ansible_host']}} --kubernetes-version v1.29.2
+  ansible.builtin.shell: kubeadm config images pull --cri-socket unix:///var/run/crio/crio.sock --kubernetes-version v1.29.2
