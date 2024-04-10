@@ -12,3 +12,14 @@
 
 - name: Apply metallb-native
   ansible.builtin.shell: kubectl --kubeconfig /etc/kubernetes/admin.conf apply -f /tmp/metallb-native.yaml
+
+- name: Wait for Readiness of metallb-native
+  ansible.builtin.shell: kubectl --kubeconfig /etc/kubernetes/admin.conf wait -n metallb-system --all pods --for=condition=Ready --timeout=5m
+
+- name: Copy metallb ip pools & advertisement manifest
+  ansible.builtin.template:
+    src: "vips.yml.j2"
+    dest: "/tmp/vips.yml"
+
+- name: Apply metallb ip pools
+  ansible.builtin.shell: kubectl --kubeconfig /etc/kubernetes/admin.conf apply -f /tmp/vips.yml
