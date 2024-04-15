@@ -55,6 +55,12 @@
     - { src: "1272788a112d", dest: "127.0.0.1/cilium/cilium:v1.15.3" }
     - { src: "50a752c324f2", dest: "127.0.0.1/metallb/controller:v0.14.4" }
     - { src: "666c5d58d2fc", dest: "127.0.0.1/metallb/speaker:v0.14.4" }
+    - { src: "894852f8315c", dest: "127.0.0.1/sig-storage/nfsplugin:v4.6.0" }
+    - { src: "38ae1b6759b0", dest: "127.0.0.1/sig-storage/livenessprobe:v2.12.0" }
+    - { src: "6cc68fe8a5f5", dest: "127.0.0.1/sig-storage/csi-provisioner:v4.0.0" }
+    - { src: "b572095c12f7", dest: "127.0.0.1/sig-storage/csi-node-driver-registrar:v2.10.0" }
+    - { src: "4ab832e8228c", dest: "127.0.0.1/sig-storage/csi-snapshotter:v6.3.3" }
+    - { src: "4f642f162057", dest: "127.0.0.1/sig-storage/snapshot-controller:v6.3.3" }
 
 - name: Push the images
   community.docker.docker_image_push:
@@ -71,3 +77,10 @@
     - { src: "1272788a112d", dest: "127.0.0.1/cilium/cilium:v1.15.3" }
     - { src: "50a752c324f2", dest: "127.0.0.1/metallb/controller:v0.14.4" }
     - { src: "666c5d58d2fc", dest: "127.0.0.1/metallb/speaker:v0.14.4" }
+    - { src: "894852f8315c", dest: "127.0.0.1/sig-storage/nfsplugin:v4.6.0" }
+    - { src: "38ae1b6759b0", dest: "127.0.0.1/sig-storage/livenessprobe:v2.12.0" }
+    - { src: "6cc68fe8a5f5", dest: "127.0.0.1/sig-storage/csi-provisioner:v4.0.0" }
+    - { src: "b572095c12f7", dest: "127.0.0.1/sig-storage/csi-node-driver-registrar:v2.10.0" }
+    - { src: "4ab832e8228c", dest: "127.0.0.1/sig-storage/csi-snapshotter:v6.3.3" }
+    - { src: "4f642f162057", dest: "127.0.0.1/sig-storage/snapshot-controller:v6.3.3" }
+

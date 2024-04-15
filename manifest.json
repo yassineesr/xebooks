@@ -796,6 +796,54 @@
     "type": "rpm",
     "checksum": "d9372f58fc883b7dba690154279b87772a6ad8e3f98dc3cd801ca7990e8ef04d",
     "role": "kubernetes/install_deps"
+  },
+  {
+    "name": "csi-driver-nfs-v4.6.0.tgz",
+    "url": "https://xenedium-k8s.fra1.cdn.digitaloceanspaces.com/csi-driver-nfs-v4.6.0.tgz",
+    "type": "helm",
+    "checksum": "fc252e16ce6c27a5090b73f4d4368674c768b48c289eea5904f5369082d8cab3",
+    "role": "kubernetes/storage_class"
+  },
+  {
+    "name": "nfsplugin-v4.6.0.tar.gz",
+    "url": "https://xenedium-k8s.fra1.cdn.digitaloceanspaces.com/nfsplugin-v4.6.0.tar.gz",
+    "type": "image",
+    "checksum": "f945a60c28f8a40793529a7c18b886c83a623d561a5429bf6e345f1cea550777",
+    "role": "container_registry"
+  },
+  {
+    "name": "livenessprobe-v2.12.0.tar.gz",
+    "url": "https://xenedium-k8s.fra1.cdn.digitaloceanspaces.com/livenessprobe-v2.12.0.tar.gz",
+    "type": "image",
+    "checksum": "1120cc11b91a2c106091ada38b2ae852be7c55a115bb6bf9d69f32bb6a9dae7a",
+    "role": "container_registry"
+  },
+  {
+    "name": "csi-provisioner-v4.0.0.tar.gz",
+    "url": "https://xenedium-k8s.fra1.cdn.digitaloceanspaces.com/csi-provisioner-v4.0.0.tar.gz",
+    "type": "image",
+    "checksum": "6072aa2adf1668f7a5ef28c661da657bf64516ba651f010920b17271c8aadbdb",
+    "role": "container_registry"
+  },
+  {
+    "name": "csi-node-driver-registrar-v2.10.0.tar.gz",
+    "url": "https://xenedium-k8s.fra1.cdn.digitaloceanspaces.com/csi-node-driver-registrar-v2.10.0.tar.gz",
+    "type": "image",
+    "checksum": "ed7f64290f6448396edf9977dbec4513507e5034c7a3c12265e61cec8578b621",
+    "role": "container_registry"
+  },
+  {
+    "name": "csi-snapshotter-v6.3.3.tar.gz",
+    "url": "https://xenedium-k8s.fra1.cdn.digitaloceanspaces.com/csi-snapshotter-v6.3.3.tar.gz",
+    "type": "image",
+    "checksum": "119f14a07318e44da0b1fd7a4efcd0edd26d3830b27e070ec65de2d029d56c45",
+    "role": "container_registry"
+  },
+  {
+    "name": "snapshot-controller-v6.3.3.tar.gz",
+    "url": "https://xenedium-k8s.fra1.cdn.digitaloceanspaces.com/snapshot-controller-v6.3.3.tar.gz",
+    "type": "image",
+    "checksum": "3680c3d55a5c30829504b12e796acceb6a0d80ad5cfb8498b4d733cce7699e61",
+    "role": "container_registry"
   }
 ]
-

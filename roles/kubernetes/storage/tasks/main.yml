@@ -1,0 +1,7 @@
+- name: Copy csi-driver-nfs-v4.6.0.tgz helm chart
+  ansible.builtin.copy:
+    src: "csi-driver-nfs-v4.6.0.tgz"
+    dest: "/tmp/csi-driver-nfs-v4.6.0.tgz"
+
+- name: Apply the nfs driver chart
+  ansible.builtin.shell: /tmp/linux-amd64/helm --kubeconfig /etc/kubernetes/admin.conf install csi-driver-nfs /tmp/csi-driver-nfs-v4.6.0.tgz --namespace kube-system --set externalSnapshotter.enabled=true --set controller.runOnControlPlane=true --set controller.replicas=3
