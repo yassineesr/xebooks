@@ -60,4 +60,7 @@
     replace: "useDigest: false"
 
 - name: Apply the Helm chart
-  ansible.builtin.shell: /tmp/linux-amd64/helm --kubeconfig /etc/kubernetes/admin.conf install cilium /tmp/cilium --namespace kube-system
+  ansible.builtin.shell: "/tmp/linux-amd64/helm --kubeconfig /etc/kubernetes/admin.conf install cilium /tmp/cilium --namespace kube-system --set operator.replicas={{ groups['control_planes']|length }}"
+
+- name: Wait for Readiness of the control plane and of 1/3 replicas of cilium operator deployment
+  ansible.builtin.shell: kubectl --kubeconfig /etc/kubernetes/admin.conf wait -n kube-system deployments/cilium-operator --for=jsonpath='{.status.readyReplicas}'=1 --timeout=10m

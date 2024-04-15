@@ -81,3 +81,7 @@
     dest: ./admin.conf
     flat: yes
     fail_on_missing: yes
+
+- name: Wait for kube-system pods to be ready
+  ansible.builtin.shell: kubectl --kubeconfig /etc/kubernetes/admin.conf wait -n kube-system --all pods --for=condition=Ready --timeout=5m
+

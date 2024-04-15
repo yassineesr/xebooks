@@ -1,3 +1,3 @@
-- name: Join the control plane nodes to the cluster
-  ansible.builtin.shell: "{{ hostvars[groups['control_planes'][0]]['control_plane_join_command'] }} --cri-socket unix:///var/run/crio/crio.sock"
+- name: Join the control plane nodes to the cluster and wait for operator replica to increase
+  ansible.builtin.shell: "{{ hostvars[groups['control_planes'][0]]['control_plane_join_command'] }} --cri-socket unix:///var/run/crio/crio.sock && kubectl --kubeconfig /etc/kubernetes/admin.conf wait -n kube-system deployments/cilium-operator --for=jsonpath='{.status.readyReplicas}'=2 --timeout=10m"
   throttle: 1
