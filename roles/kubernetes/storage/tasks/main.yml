@@ -5,3 +5,11 @@
 
 - name: Apply the nfs driver chart
   ansible.builtin.shell: /tmp/linux-amd64/helm --kubeconfig /etc/kubernetes/admin.conf install csi-driver-nfs /tmp/csi-driver-nfs-v4.6.0.tgz --namespace kube-system --set externalSnapshotter.enabled=true --set controller.runOnControlPlane=true --set controller.replicas=3
+
+- name: Copy the nfs storage class
+  ansible.builtin.template:
+    src: "nfs-storage-class.yaml.j2"
+    dest: "/tmp/nfs-storage-class.yaml"
+
+- name: Apply the nfs storage class as the default storage class
+  ansible.builtin.shell: kubectl --kubeconfig /etc/kubernetes/admin.conf apply -f /tmp/nfs-storage-class.yaml

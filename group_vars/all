@@ -4,3 +4,5 @@ tmp_dir: /tmp
 vrrp_ip_cidr: 192.168.1.140/24
 registry_data_dir: /registry-data
 vrrp_ip: 192.168.1.140
+nfs_server: 192.168.1.30
+nfs_server_share: /mini-hdds/kubernetes
