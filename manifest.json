@@ -802,7 +802,7 @@
     "url": "https://xenedium-k8s.fra1.cdn.digitaloceanspaces.com/csi-driver-nfs-v4.6.0.tgz",
     "type": "helm",
     "checksum": "fc252e16ce6c27a5090b73f4d4368674c768b48c289eea5904f5369082d8cab3",
-    "role": "kubernetes/storage_class"
+    "role": "kubernetes/storage"
   },
   {
     "name": "nfsplugin-v4.6.0.tar.gz",
