@@ -1,0 +1,26 @@
+- name: Remove known public registries hosts and point them to the private registry
+  ansible.builtin.lineinfile:
+    path: /etc/hosts
+    regexp: "{{ item }}"
+    state: absent
+  loop:
+    - ".*quay.io"
+    - ".*docker.io"
+    - ".*registry.k8s.io"
+
+
+- name: Check if /etc/cloud/templates/hosts.redhat.tmpl exists
+  ansible.builtin.stat:
+    path: /etc/cloud/templates/hosts.redhat.tmpl
+  register: hosts_template
+
+- name: Remove known public registries hosts from hosts template file and point them to the private registry
+  ansible.builtin.lineinfile:
+    path: /etc/cloud/templates/hosts.redhat.tmpl
+    regexp: "{{ item }}"
+    state: absent
+  loop:
+    - ".*quay.io"
+    - ".*docker.io"
+    - ".*registry.k8s.io"
+  when: hosts_template.stat.exists

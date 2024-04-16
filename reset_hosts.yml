@@ -1,0 +1,7 @@
+---
+- hosts: control_planes, nodes
+  gather_facts: yes
+  become: yes
+  roles:
+    - cleanup_hosts
+
