@@ -63,7 +63,7 @@
 
 
 - name: stop docker 
-  hosts: container_registry, ca_server
+  hosts: container_registry
   become: true
 
   tasks:
@@ -82,27 +82,11 @@
       cmd: "docker stop registry"
     when: docker_registry_check.stdout != ""
 
-  - name:
+  - name: Remove registry
     ansible.builtin.command: 
       cmd: "docker remove registry"
     when: docker_registry_check.stdout != ""
 
-
-- name: stop swap 
-  hosts: all
-  become: true
-
-  tasks:
-
-  - name: Disabling SWAP 
-    ansible.builtin.command: swapoff -a
-
-  - name: Disable swap permanently, persist reboots
-    replace:
-      path: /etc/fstab
-      regexp: '^(\s*)([^#\n]+\s+)(\w+\s+)swap(\s+.*)$'
-      replace: '#\1\2\3swap\4'
-      backup: yes
 
 - name: Configure Firewall
   hosts: all
