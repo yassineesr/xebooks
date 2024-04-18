@@ -1,0 +1,111 @@
+---
+- name: Remove Certs
+  hosts: all
+  become: true 
+
+  tasks: 
+  - name: Remove directory /certs 
+    ansible.builtin.file:
+      path: /certs # "{{certs_dir}}"
+      state: absent
+
+  - name : Remove file /anchors/ca.crt
+    ansible.builtin.file:
+      path: /etc/pki/ca-trust/source/anchors/ca.crt
+      state: absent 
+
+
+
+- name: Remove kubernetes
+  hosts: control_planes, nodes
+  become: true
+
+  tasks:
+  - name: Remove file .kube
+    ansible.builtin.file:
+      path: ~/.kube
+      state: absent 
+
+ 
+
+  - name: Remove directory kubernetes
+    ansible.builtin.file:
+      path: /etc/kubernetes/
+      state: absent
+
+  - name: Remove directory etcd
+    ansible.builtin.file:
+      path: /var/lib/etcd
+      state: absent
+
+  - name: Remove directory net.d
+    ansible.builtin.file:
+      path: /etc/cni/net.d
+      state: absent
+      
+  - name: Stop service crio, if started
+    ansible.builtin.service:
+      name: crio
+      state: stopped
+      enabled: no
+
+  - name: Stop service kubelet, if started
+    ansible.builtin.service:
+      name: kubelet
+      state: stopped
+      enabled: no
+
+  - name: Reset kubadm
+    ansible.builtin.expect:
+      command: kubeadm reset
+      responses:
+        '\[reset\] Are you sure you want to proceed\? \[y/N\]': 'Y'
+
+
+- name: stop docker 
+  hosts: container_registry
+  become: true
+
+  tasks:
+  - name: Remove data
+    ansible.builtin.file: 
+      path: /data
+      state: absent
+
+  - name: Check if Docker container 'registry' exists
+    ansible.builtin.shell:
+      cmd: "docker ps -aq --filter name=registry"
+    register: docker_registry_check
+
+  - name: Stop registry
+    ansible.builtin.command: 
+      cmd: "docker stop registry"
+    when: docker_registry_check.stdout != ""
+
+  - name: Remove registry
+    ansible.builtin.command: 
+      cmd: "docker remove registry"
+    when: docker_registry_check.stdout != ""
+
+
+- name: Configure Firewall
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Ensure firewalld service is started
+      ansible.builtin.service:
+        name: firewalld
+        state: started
+        enabled: yes
+
+- name: Reboot machines
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Reboot the machine
+      ansible.builtin.reboot:
+
+  
+    
