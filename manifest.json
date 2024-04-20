@@ -845,5 +845,26 @@
     "type": "image",
     "checksum": "3680c3d55a5c30829504b12e796acceb6a0d80ad5cfb8498b4d733cce7699e61",
     "role": "container_registry"
+  },
+  {
+    "name": "flannel-flannel-v0.25.1.tar.gz",
+    "url": "https://xenedium-k8s.fra1.cdn.digitaloceanspaces.com/flannel-flannel-v0.25.1.tar.gz",
+    "type": "image",
+    "checksum": "fc19411edb29a3f2b251340f9f985be11d95f1519e11b5b0d6524ba4c62e3d1b",
+    "role": "container_registry"
+  },
+  {
+    "name": "flannel-flannel-cni-plugin-v1.4.0-flannel1.tar.gz",
+    "url": "https://xenedium-k8s.fra1.cdn.digitaloceanspaces.com/flannel-flannel-cni-plugin-v1.4.0-flannel1.tar.gz",
+    "type": "image",
+    "checksum": "65f4debefab9efac100cce65b35f5a3a21990ba7f7c48ff94779f0e35467dde6",
+    "role": "container_registry"
+  },
+  {
+    "name": "flannel.tgz",
+    "url": "https://xenedium-k8s.fra1.cdn.digitaloceanspaces.com/flannel.tgz",
+    "type": "helm",
+    "checksum": "f407382752e4d98e4518e5ba6385dff76cc9de04936f851c51b6d468c3b3462a",
+    "role": "kubernetes/cni"
   }
 ]
