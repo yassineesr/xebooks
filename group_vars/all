@@ -1,8 +1,11 @@
 secret_ca_passphrase: test
 certs_dir: /certs
 tmp_dir: /tmp
-vrrp_ip_cidr: 192.168.1.140/24
+vrrp_ip_cidr: 10.0.0.20/24
 registry_data_dir: /registry-data
-vrrp_ip: 192.168.1.140
-nfs_server: 192.168.1.30
-nfs_server_share: /mini-hdds/kubernetes
+vrrp_ip: 10.0.0.20
+nfs_server: 10.0.0.1
+nfs_server_share: /hdd/kubernetes
+kube_pod_cidr: 10.244.0.0/16
+kube_service_cidr: 10.96.0.0/12
+kube_cni: flannel
