@@ -61,6 +61,8 @@
     - { src: "b572095c12f7", dest: "127.0.0.1/sig-storage/csi-node-driver-registrar:v2.10.0" }
     - { src: "4ab832e8228c", dest: "127.0.0.1/sig-storage/csi-snapshotter:v6.3.3" }
     - { src: "4f642f162057", dest: "127.0.0.1/sig-storage/snapshot-controller:v6.3.3" }
+    - { src: "1575deaad3b0", dest: "127.0.0.1/flannel/flannel:v0.25.1" }
+    - { src: "77c1250c26d9", dest: "127.0.0.1/flannel/flannel-cni-plugin:v1.4.0-flannel1" }
 
 - name: Push the images
   community.docker.docker_image_push:
@@ -83,4 +85,6 @@
     - { src: "b572095c12f7", dest: "127.0.0.1/sig-storage/csi-node-driver-registrar:v2.10.0" }
     - { src: "4ab832e8228c", dest: "127.0.0.1/sig-storage/csi-snapshotter:v6.3.3" }
     - { src: "4f642f162057", dest: "127.0.0.1/sig-storage/snapshot-controller:v6.3.3" }
+    - { src: "1575deaad3b0", dest: "127.0.0.1/flannel/flannel:v0.25.1" }
+    - { src: "77c1250c26d9", dest: "127.0.0.1/flannel/flannel-cni-plugin:v1.4.0-flannel1" }
 

@@ -35,17 +35,32 @@
 # - name: Apply cni network plugin (Cilium)
 #   ansible.builtin.shell: find /tmp/cilium -type f -name '*.yaml' -exec kubectl --kubeconfig /etc/kubernetes/admin.conf apply -f {} \;
 
-- name: Extract Cilium chart
-  ansible.builtin.unarchive:
-    src: cilium-1.15.3.tgz
-    dest: /tmp
-    creates: /tmp/cilium
-
 - name: Extract Helm build
   ansible.builtin.unarchive:
     src: helm-v3.14.3-linux-amd64.tar.gz
     dest: /tmp
     creates: /tmp/linux-amd64/helm
+
+- name: Copy the Flannel chart
+  ansible.builtin.copy:
+    src: flannel.tgz
+    dest: /tmp
+  when: kube_cni == 'flannel'
+
+- name: Apply the Flannel Helm Chart
+  ansible.builtin.shell: '/tmp/linux-amd64/helm --kubeconfig /etc/kubernetes/admin.conf install flannel --namespace kube-flannel --create-namespace --set podCidr={{ kube_pod_cidr }} --set flannel.image.repository="quay.io/flannel/flannel" --set flannel.image_cni.repository="quay.io/flannel/flannel-cni-plugin" /tmp/flannel.tgz'
+  when: kube_cni == 'flannel'
+
+- name: Wait for Readiness of all the pods
+  ansible.builtin.shell: kubectl --kubeconfig /etc/kubernetes/admin.conf wait -A --all pods --for=condition=Ready --timeout=5m
+  when: kube_cni == 'flannel'
+
+- name: Extract Cilium chart
+  ansible.builtin.unarchive:
+    src: cilium-1.15.3.tgz
+    dest: /tmp
+    creates: /tmp/cilium
+  when: kube_cni == 'cilium'
 
 #- name: Replace all the 'quay.io' occurrences with the private registry recursively
 #  ansible.builtin.replace:
@@ -58,9 +73,12 @@
     path: "/tmp/cilium/values.yaml"
     regexp: "useDigest: true"
     replace: "useDigest: false"
+  when: kube_cni == 'cilium'
 
-- name: Apply the Helm chart
+- name: Apply the Cilium Helm chart
   ansible.builtin.shell: "/tmp/linux-amd64/helm --kubeconfig /etc/kubernetes/admin.conf install cilium /tmp/cilium --namespace kube-system --set operator.replicas={{ groups['control_planes']|length }}"
+  when: kube_cni == 'cilium'
 
-- name: Wait for Readiness of the control plane and of 1/3 replicas of cilium operator deployment
+- name: Wait for Readiness of the control plane and of the replicas of cilium operator deployment
   ansible.builtin.shell: kubectl --kubeconfig /etc/kubernetes/admin.conf wait -n kube-system deployments/cilium-operator --for=jsonpath='{.status.readyReplicas}'=1 --timeout=10m
+  when: kube_cni == 'cilium'
