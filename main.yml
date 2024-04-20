@@ -1,6 +1,6 @@
 ---
 - hosts: all
-  gather_facts: yes
+  gather_facts: no
   become: yes
   roles:
     - install_ssl_deps
@@ -54,11 +54,6 @@
   become: yes
   roles:
     - kubernetes/main_control_plane
-
-- hosts: control_planes[0]
-  gather_facts: yes
-  become: yes
-  roles:
     - kubernetes/cni
 
 - hosts: control_planes[1:]
@@ -79,3 +74,4 @@
   roles:
     - kubernetes/metallb
     - kubernetes/storage
+
