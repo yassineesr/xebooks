@@ -1,5 +1,5 @@
 ---
-- name: Remove Certs
+- name: Cleanup CA and certs
   hosts: all
   become: true 
 
@@ -15,8 +15,7 @@
       state: absent 
 
 
-
-- name: Remove kubernetes
+- name: Cleanup and drain kubernetes hosts
   hosts: control_planes, nodes
   become: true
 
@@ -26,7 +25,11 @@
       path: ~/.kube
       state: absent 
 
- 
+  - name: Reset kubadm
+    ansible.builtin.expect:
+      command: kubeadm reset
+      responses:
+        '\[reset\] Are you sure you want to proceed\? \[y/N\]': 'Y'
 
   - name: Remove directory kubernetes
     ansible.builtin.file:
@@ -55,23 +58,12 @@
       state: stopped
       enabled: no
 
-  - name: Reset kubadm
-    ansible.builtin.expect:
-      command: kubeadm reset
-      responses:
-        '\[reset\] Are you sure you want to proceed\? \[y/N\]': 'Y'
 
-
-- name: stop docker 
+- name: Cleanup container registry
   hosts: container_registry
   become: true
 
   tasks:
-  - name: Remove data
-    ansible.builtin.file: 
-      path: /data
-      state: absent
-
   - name: Check if Docker container 'registry' exists
     ansible.builtin.shell:
       cmd: "docker ps -aq --filter name=registry"
@@ -87,17 +79,10 @@
       cmd: "docker remove registry"
     when: docker_registry_check.stdout != ""
 
-
-- name: Configure Firewall
-  hosts: all
-  become: true
-
-  tasks:
-    - name: Ensure firewalld service is started
-      ansible.builtin.service:
-        name: firewalld
-        state: started
-        enabled: yes
+  - name: Remove data
+    ansible.builtin.file: 
+      path: "{{ registry_data_dir }}"
+      state: absent
 
 - name: Reboot machines
   hosts: all
