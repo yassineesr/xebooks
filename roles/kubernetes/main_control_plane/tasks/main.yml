@@ -57,6 +57,8 @@
     --cri-socket unix:///var/run/crio/crio.sock \
     --upload-certs \
     --kubernetes-version v1.29.2 \
+    --pod-network-cidr {{ kube_pod_cidr }} \
+    --service-cidr {{ kube_service_cidr }} \
     --certificate-key {{ kube_certificate_key.stdout }}
 
 - name: Get the kubeadm control plane join command
@@ -82,6 +84,6 @@
     flat: yes
     fail_on_missing: yes
 
-- name: Wait for kube-system pods to be ready
-  ansible.builtin.shell: kubectl --kubeconfig /etc/kubernetes/admin.conf wait -n kube-system --all pods --for=condition=Ready --timeout=5m
+- name: Wait for all pods to be ready
+  ansible.builtin.shell: kubectl --kubeconfig /etc/kubernetes/admin.conf wait -A --all pods --for=condition=Ready --timeout=5m
 
