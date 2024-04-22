@@ -3,7 +3,7 @@
       "name": "cilium-cilium-v1.15.3.tar.gz",
       "url": "https://xenedium-k8s.fra1.cdn.digitaloceanspaces.com/cilium-cilium-v1.15.3.tar.gz",
       "type": "image",
-      "checksum": "b9ca41521b464188e767a465fd991fbb4530cfd886457c4c69089bd7dc7fd85a",
+      "checksum": "030ec82a477266dbdd4e5509aca86209484e6ea15908a2d98ee10578ddb49ed6",
       "role": "container_registry"
     },
     {
@@ -66,14 +66,14 @@
       "name": "docker-ce-25.0.4-1.el8.x86_64.rpm",
       "url": "https://download.docker.com/linux/rhel/8/x86_64/stable/Packages/docker-ce-25.0.4-1.el8.x86_64.rpm",
       "type": "rpm",
-      "checksum": "",
+      "checksum": "99099da99229c8b981e4a622315033eb0eed4304c81bd04b1a829d1f5a472422",
       "role": "docker"
     },
     {
       "name": "docker-ce-cli-25.0.4-1.el8.x86_64.rpm",
       "url": "https://download.docker.com/linux/rhel/8/x86_64/stable/Packages/docker-ce-cli-25.0.4-1.el8.x86_64.rpm",
       "type": "rpm",
-      "checksum": "99099da99229c8b981e4a622315033eb0eed4304c81bd04b1a829d1f5a472422",
+      "checksum": "6cff5e71d450e3df17ecf707e1f8dd984a1aa69a8adb2ed37d66663b37c31171",
       "role": "docker"
     },
     {
@@ -262,7 +262,7 @@
       "name": "python3-ply-3.9-9.el8.noarch.rpm",
       "url": "http://mirror.centos.org/centos/8-stream/BaseOS/x86_64/os/Packages/python3-ply-3.9-9.el8.noarch.rpm",
       "type": "rpm",
-      "checksum": "8d1e8c7a00924d1a6dee44ade189025853a501d4f77c73f3bfc006aa907d97daf",
+      "checksum": "d1e8c7a00924d1a6dee44ade189025853a501d4f77c73f3bfc006aa907d97daf",
       "role": "install_ssl_deps"
     },
     {
@@ -550,21 +550,21 @@
       "name": "fuse3-libs-3.3.0-19.el8.x86_64.rpm",
       "url": "http://mirror.centos.org/centos/8-stream/BaseOS/x86_64/os/Packages/fuse3-libs-3.3.0-19.el8.x86_64.rpm",
       "type": "rpm",
-      "checksum": "",
+      "checksum": "b60bd08a6cc71d5b833ce149d3da0acef1a43bfe2386e6790bcc8a0a1b9b7d91",
       "role": "docker"
     },
     {
       "name": "container-selinux-2.229.0-2.module_el8+847+7863d4e6.noarch.rpm",
       "url": "http://mirror.centos.org/centos/8-stream/AppStream/x86_64/os/Packages/container-selinux-2.229.0-2.module_el8+847+7863d4e6.noarch.rpm",
       "type": "rpm",
-      "checksum": "",
+      "checksum": "c988bfe5f117df1891ce8258ae9df489988d893c64a36d8ddbfaf7d0a58dc2de",
       "role": "docker"
     },
     {
       "name": "docker-buildx-plugin-0.13.0-1.el8.x86_64.rpm",
       "url": "https://download.docker.com/linux/rhel/8/x86_64/stable/Packages/docker-buildx-plugin-0.13.0-1.el8.x86_64.rpm",
       "type": "rpm",
-      "checksum": "b60bd08a6cc71d5b833ce149d3da0acef1a43bfe2386e6790bcc8a0a1b9b7d91",
+      "checksum": "501b2053ecc7c3569c05aee3677767730c83d73e1d08128a2529e73d59d41ca9",
       "role": "docker"
     },
     {
@@ -639,9 +639,9 @@
     },
     {
       "name": "perl-Net-SSLeay-1.88-1.el8.x86_64.rpm",
-      "url": "1e253318c542798bd81aa78a2807902d6bda648d5bd9e6f0ba84c79b3822171a",
+      "url": "http://mirror.centos.org/centos/8-stream/BaseOS/x86_64/os/Packages/perl-Net-SSLeay-1.88-1.el8.x86_64.rpm",
       "type": "rpm",
-      "checksum": "",
+      "checksum": "1e253318c542798bd81aa78a2807902d6bda648d5bd9e6f0ba84c79b3822171a",
       "role": "haproxy_keepalived"
     },
     {
