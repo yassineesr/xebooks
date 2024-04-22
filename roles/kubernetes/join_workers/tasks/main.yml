@@ -1,2 +1,3 @@
 - name: Join the worker nodes to the cluster
   ansible.builtin.shell: "{{ hostvars[groups['control_planes'][0]]['node_join_command'] }} --cri-socket unix:///var/run/crio/crio.sock"
+  throttle: 1

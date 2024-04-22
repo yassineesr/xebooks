@@ -12,12 +12,14 @@
 
 - name: Wait for all pods to be ready
   ansible.builtin.shell: kubectl --kubeconfig /etc/kubernetes/admin.conf wait -A --all pods --for=condition=Ready --timeout=5m
+  ignore_errors: true
 
 - name: Apply metallb-native
   ansible.builtin.shell: kubectl --kubeconfig /etc/kubernetes/admin.conf apply -f /tmp/metallb-native.yaml
 
 - name: Wait for Readiness of metallb-native
   ansible.builtin.shell: kubectl --kubeconfig /etc/kubernetes/admin.conf wait -n metallb-system --all pods --for=condition=Ready --timeout=5m
+  ignore_errors: true
 
 - name: Copy metallb ip pools & advertisement manifest
   ansible.builtin.template:

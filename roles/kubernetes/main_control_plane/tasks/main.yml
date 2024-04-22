@@ -50,7 +50,7 @@
   ansible.builtin.shell: kubeadm certs certificate-key
   register: kube_certificate_key
 
-- name: Start kubeadm init on first control plane
+- name: Start kubeadm init on first control plane with vip endpoint
   ansible.builtin.shell: |
     kubeadm init \
     --control-plane-endpoint {{ vrrp_ip }} \
@@ -60,6 +60,18 @@
     --pod-network-cidr {{ kube_pod_cidr }} \
     --service-cidr {{ kube_service_cidr }} \
     --certificate-key {{ kube_certificate_key.stdout }}
+  when: groups['control_planes']|length > 1
+
+- name: Start kubeadm init on control plane (single control plane)
+  ansible.builtin.shell: |
+    kubeadm init \
+    --cri-socket unix:///var/run/crio/crio.sock \
+    --upload-certs \
+    --kubernetes-version v1.29.2 \
+    --pod-network-cidr {{ kube_pod_cidr }} \
+    --service-cidr {{ kube_service_cidr }} \
+    --certificate-key {{ kube_certificate_key.stdout }}
+  when: groups['control_planes']|length == 1
 
 - name: Get the kubeadm control plane join command
   ansible.builtin.shell: kubeadm token create --print-join-command --certificate-key {{ kube_certificate_key.stdout }}
