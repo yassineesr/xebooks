@@ -76,8 +76,6 @@
   roles:
     - kubernetes/metallb
     - kubernetes/storage
-    - role: kubernetes/scale_cilium
-      when: kube_cni == 'cilium' and groups['control_planes']|length > 1
 
 - hosts: all,!container_registry # All except the CR
   gather_facts: yes
