@@ -34,12 +34,14 @@
   gather_facts: yes
   become: yes
   roles:
-    - haproxy_keepalived
+    - role: haproxy_keepalived
+      when: groups['control_planes']|length > 1
 
 - hosts: control_planes,nodes
   gather_facts: yes
   become: yes
   roles:
+    - disable_swap
     - kubernetes/install_deps
     - kubernetes/preconfig_nodes
 
@@ -74,4 +76,10 @@
   roles:
     - kubernetes/metallb
     - kubernetes/storage
+
+- hosts: all,!container_registry # All except the CR
+  gather_facts: yes
+  become: yes
+  roles:
+    - cleanup_hosts
 

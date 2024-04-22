@@ -1,3 +1,4 @@
 - name: Join the control plane nodes to the cluster and wait for all pods to be ready
   ansible.builtin.shell: "{{ hostvars[groups['control_planes'][0]]['control_plane_join_command'] }} --cri-socket unix:///var/run/crio/crio.sock && kubectl --kubeconfig /etc/kubernetes/admin.conf wait -A --all pods --for=condition=Ready --timeout=5m"
   throttle: 1
+  ignore_errors: true

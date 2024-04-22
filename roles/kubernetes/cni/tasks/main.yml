@@ -76,7 +76,7 @@
   when: kube_cni == 'cilium'
 
 - name: Apply the Cilium Helm chart
-  ansible.builtin.shell: "/tmp/linux-amd64/helm --kubeconfig /etc/kubernetes/admin.conf install cilium /tmp/cilium --namespace kube-system --set operator.replicas={{ groups['control_planes']|length }}"
+  ansible.builtin.shell: "/tmp/linux-amd64/helm --kubeconfig /etc/kubernetes/admin.conf install cilium /tmp/cilium --namespace kube-system --set operator.replicas=1 --set ipam.operator.clusterPoolIPv4PodCIDRList={{ kube_pod_cidr }}"
   when: kube_cni == 'cilium'
 
 - name: Wait for Readiness of the control plane and of the replicas of cilium operator deployment

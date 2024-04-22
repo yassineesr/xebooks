@@ -13,3 +13,6 @@
 
 - name: Apply the nfs storage class as the default storage class
   ansible.builtin.shell: kubectl --kubeconfig /etc/kubernetes/admin.conf apply -f /tmp/nfs-storage-class.yaml
+
+- name: Wait for Readiness of all the pods
+  ansible.builtin.shell: kubectl --kubeconfig /etc/kubernetes/admin.conf wait -A --all pods --for=condition=Ready --timeout=5m
