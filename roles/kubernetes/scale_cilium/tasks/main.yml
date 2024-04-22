@@ -1,0 +1,8 @@
+- name: Scale cilium deployments to the number of control planes
+  ansible.builtin.shell: "kubectl --kubeconfig /etc/kubernetes/admin.conf patch deployments.apps -n kube-system cilium-operator --patch='{\"spec\":{\"replicas\": {{ groups['control_planes']|length }} }}'"
+  when: kube_cni == 'cilium'
+
+- name: Wait for all pods to be ready
+  ansible.builtin.shell: kubectl --kubeconfig /etc/kubernetes/admin.conf wait -A --all pods --for=condition=Ready --timeout=5m
+  ignore_errors: true
+
