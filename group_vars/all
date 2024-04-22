@@ -8,4 +8,4 @@ nfs_server: 10.0.0.1
 nfs_server_share: /hdd/kubernetes
 kube_pod_cidr: 10.244.0.0/16
 kube_service_cidr: 10.96.0.0/12
-kube_cni: flannel
+kube_cni: cilium
