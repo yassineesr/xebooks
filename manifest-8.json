@@ -790,6 +790,48 @@
       "type": "rpm",
       "checksum": "224100af3ecfc80c416796ec02c7c4dd113a38d42349d763485f3b42f260493f",
       "role": "docker"
+    },
+    {
+      "name": "libnetfilter_conntrack-1.0.6-5.el8.x86_64.rpm",
+      "url": "http://mirror.centos.org/centos/8-stream/BaseOS/x86_64/os/Packages/libnetfilter_conntrack-1.0.6-5.el8.x86_64.rpm",
+      "type": "rpm",
+      "checksum": "224100af3ecfc80c416796ec02c7c4dd113a38d42349d763485f3b42f260493f",
+      "role": "docker"
+    },
+    {
+      "name": "iptables-1.8.5-10.el8.x86_64.rpm",
+      "url": "http://mirror.centos.org/centos/8-stream/BaseOS/x86_64/os/Packages/iptables-1.8.5-10.el8.x86_64.rpm",
+      "type": "rpm",
+      "checksum": "634d3c6155d2adc6cff736fedcda8c6dc24f8a0266db3083221ea11f24e48c7e",
+      "role": "kubernetes/install_deps"
+    },
+    {
+      "name": "libnfnetlink-1.0.1-13.el8.x86_64.rpm",
+      "url": "http://mirror.centos.org/centos/8-stream/BaseOS/x86_64/os/Packages/libnfnetlink-1.0.1-13.el8.x86_64.rpm",
+      "type": "rpm",
+      "checksum": "cec98aa5fbefcb99715921b493b4f92d34c4eeb823e9c8741aa75e280def89f1",
+      "role": "kubernetes/install_deps"
+    },
+    {
+      "name": "libnetfilter_conntrack-1.0.6-5.el8.x86_64.rpm",
+      "url": "http://mirror.centos.org/centos/8-stream/BaseOS/x86_64/os/Packages/libnetfilter_conntrack-1.0.6-5.el8.x86_64.rpm",
+      "type": "rpm",
+      "checksum": "224100af3ecfc80c416796ec02c7c4dd113a38d42349d763485f3b42f260493f",
+      "role": "kubernetes/install_deps"
+    },
+    {
+      "name": "iptables-ebtables-1.8.5-10.el8.x86_64.rpm",
+      "url" : "http://mirror.centos.org/centos/8-stream/BaseOS/x86_64/os/Packages/iptables-ebtables-1.8.5-10.el8.x86_64.rpm",
+      "type" : "rpm",
+      "checksum": "e30fbc39b10fab3db8bba19454afab11449bff5d62d480d71cc75c29d4b99635",
+      "role": "kubernetes/install_deps"
     }
+    
+
+
+
+
+
+
   ]
   
