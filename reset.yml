@@ -25,11 +25,18 @@
       path: ~/.kube
       state: absent 
 
-  - name: Reset kubadm
+  - name: Check if kubeadm is installed
+    ansible.builtin.command: which kubeadm
+    register: kubeadm_check
+    ignore_errors: true
+    failed_when: false
+
+  - name: Reset kubeadm if installed
     ansible.builtin.expect:
       command: kubeadm reset
       responses:
         '\[reset\] Are you sure you want to proceed\? \[y/N\]': 'Y'
+    when: kubeadm_check.rc == 0 # Task runs only if kubeadm is installed
 
   - name: Remove directory kubernetes
     ansible.builtin.file:
@@ -45,18 +52,41 @@
     ansible.builtin.file:
       path: /etc/cni/net.d
       state: absent
-      
-  - name: Stop service crio, if started
+
+
+  - name: Gather service facts
+    ansible.builtin.service_facts:
+
+  - name: Stop service crio if it's installed and running
     ansible.builtin.service:
       name: crio
       state: stopped
       enabled: no
+    when:
+      - "'crio' in ansible_facts.services"  # Check if 'crio' service is in service facts
+      - ansible_facts.services['crio'].state == 'running'  # Check if 'crio' service is running
 
-  - name: Stop service kubelet, if started
+  - name: Stop service kubelet if it's installed and running
     ansible.builtin.service:
       name: kubelet
       state: stopped
       enabled: no
+    when:
+      - "'kubelet' in ansible_facts.services"  
+      - ansible_facts.services['kubelet'].state == 'running'   
+      
+ # - name: Stop service crio, if started
+ #   ansible.builtin.service:
+ #     name: crio
+ #     state: stopped
+ #     enabled: no
+    
+#  - name: Stop service kubelet, if started
+#    ansible.builtin.service:
+#      name: kubelet
+#      state: stopped
+#      enabled: no
+#    when: ansible_facts.services['kubelet'].status == 'running'
 
 
 - name: Cleanup container registry
