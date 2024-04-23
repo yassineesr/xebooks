@@ -3,7 +3,7 @@
       "name": "cilium-cilium-v1.15.3.tar.gz",
       "url": "https://xenedium-k8s.fra1.cdn.digitaloceanspaces.com/cilium-cilium-v1.15.3.tar.gz",
       "type": "image",
-      "checksum": "030ec82a477266dbdd4e5509aca86209484e6ea15908a2d98ee10578ddb49ed6",
+      "checksum": "b9ca41521b464188e767a465fd991fbb4530cfd886457c4c69089bd7dc7fd85a",
       "role": "container_registry"
     },
     {
