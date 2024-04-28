@@ -792,13 +792,6 @@
       "role": "docker"
     },
     {
-      "name": "libnetfilter_conntrack-1.0.6-5.el8.x86_64.rpm",
-      "url": "http://mirror.centos.org/centos/8-stream/BaseOS/x86_64/os/Packages/libnetfilter_conntrack-1.0.6-5.el8.x86_64.rpm",
-      "type": "rpm",
-      "checksum": "224100af3ecfc80c416796ec02c7c4dd113a38d42349d763485f3b42f260493f",
-      "role": "docker"
-    },
-    {
       "name": "iptables-1.8.5-10.el8.x86_64.rpm",
       "url": "http://mirror.centos.org/centos/8-stream/BaseOS/x86_64/os/Packages/iptables-1.8.5-10.el8.x86_64.rpm",
       "type": "rpm",
