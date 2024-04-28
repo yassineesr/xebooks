@@ -24,6 +24,16 @@ def download_file(url: str, destination_filename: str, proxy: str = None) -> Non
     else:
         path, _ = urlretrieve(url, destination_filename)
 
+
+
+        
+def verify_hash_or_download(file : str, entry : str,proxy: str = None):
+    while sha256sum(file) != entry["checksum"] :
+        print(f"❌checksum error for {file}", end="\r" )
+        download_file(entry["url"], file, proxy)
+    return print(f"✅checksum verified for {file}" )
+
+
 def MainCheck(json_file: str, proxy: str = None) -> None:
     allowed_filenames = ["manifest-8.json", "manifest.json"]
 
@@ -38,23 +48,19 @@ def MainCheck(json_file: str, proxy: str = None) -> None:
         destination_dir = os.path.join("roles", entry["role"], "files")
         os.makedirs(destination_dir, exist_ok=True)
         destination_filename = os.path.join(destination_dir, entry["name"])
-
+        
         if os.path.exists(destination_filename):
-            if sha256sum(destination_filename) != entry["checksum"]:
-                print(f"Checksum mismatch for {entry['name']}")
-                return
-            else:
-                print(f"Exists ✅ Checksum matches for {os.path.join('roles', entry['role'], 'files', entry['name'])}")
+            verify_hash_or_download(destination_filename,entry, proxy ) 
+            
         else:
             print(f"Downloading {os.path.join(destination_dir, entry['name'])}...", end="\r")
             download_file(entry["url"], destination_filename, proxy)
-            if sha256sum(destination_filename) != entry["checksum"]:
-                print(f"Checksum mismatch for {entry['name']}")
-                return
-            print(f"✅ Checksum matches for {destination_filename}")
-
+            verify_hash_or_download(destination_filename,entry, proxy) 
+          
     print("All files downloaded and validated successfully.")
 
+
+       
 
 parser = ArgumentParser(description="Download and validate files specified in a manifest JSON.")
 parser.add_argument("json_file", type=str, choices=["manifest-8.json", "manifest.json"],help="JSON file.")
