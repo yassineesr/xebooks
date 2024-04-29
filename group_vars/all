@@ -9,3 +9,10 @@ nfs_server_share: /hdd/kubernetes
 kube_pod_cidr: 10.244.0.0/16
 kube_service_cidr: 10.96.0.0/12
 kube_cni: cilium
+vips:
+  - 192.168.1.130
+  - 192.168.1.131
+  - 192.168.1.132
+  - 192.168.1.133
+  - 192.168.1.134
+  - 192.168.1.135
