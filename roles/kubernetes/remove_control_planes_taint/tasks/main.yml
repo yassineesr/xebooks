@@ -1,3 +1,4 @@
 - name: Remove control planes no schedule on control planes taint
   ansible.builtin.shell: kubectl --kubeconfig /etc/kubernetes/admin.conf taint nodes $(hostname) node-role.kubernetes.io/control-plane:NoSchedule-
   throttle: 1
+  ignore_errors: true
