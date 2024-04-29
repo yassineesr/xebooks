@@ -76,6 +76,13 @@
   roles:
     - kubernetes/metallb
     - kubernetes/storage
+    - kubernetes/remove_control_planes_taint
+
+- hosts: control_planes
+  gather_facts: yes
+  become: yes
+  roles:
+    - kubernetes/remove_control_planes_taint
 
 - hosts: all,!container_registry # All except the CR
   gather_facts: yes
