@@ -5,7 +5,7 @@ metadata:
   namespace: metallb-system
 spec:
   addresses:
-  {%- for vip in all.vips %}
+  {%- for vip in vips %}
   - {{ vip }}
   {%- endfor %}
 ---
