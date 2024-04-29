@@ -9,5 +9,4 @@ nfs_server_share: /hdd/kubernetes
 kube_pod_cidr: 10.244.0.0/16
 kube_service_cidr: 10.96.0.0/12
 kube_cni: cilium
-vips:
-  - 10.0.0.30-10.0.0.40
+vips: [10.0.0.30-10.0.0.40]
