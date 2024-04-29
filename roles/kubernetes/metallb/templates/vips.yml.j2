@@ -5,7 +5,9 @@ metadata:
   namespace: metallb-system
 spec:
   addresses:
-  - 192.168.1.130-192.168.1.135
+  {%- for vip in vips %}
+  - {{ vip }}
+  {%- endfor %}
 ---
 apiVersion: metallb.io/v1beta1
 kind: L2Advertisement
